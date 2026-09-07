@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credibilidade e comunidade: uma mensagem só | MyDose</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15161A; --ink-2:#3C3F49; --ink-3:#6E7280;
+    --paper:#FBFAF8; --paper-2:#F2F0EC; --line:#E2DFD8;
+    --azul:#3A46E0; --azul-soft:#EEEFFE;
+    --coral:#E4553C; --coral-soft:#FDEEEA;
+    --verde:#0B8A5D; --verde-soft:#E8F5EF;
+    --amarelo:#B47B00; --amarelo-soft:#FBF2DD;
+    --serif:"Instrument Serif", Georgia, serif;
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:76px}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px; margin:0 auto; padding:0 28px}
+  header.hero{padding:76px 0 44px; border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono); font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:10px; flex-wrap:wrap}
+  .kicker b{color:var(--azul); font-weight:500}
+  h1{font-family:var(--serif); font-weight:400; font-size:clamp(38px,6vw,64px); line-height:1.03; letter-spacing:-.02em; margin:22px 0 0}
+  h1 em{font-style:italic; color:var(--azul)}
+  .dek{font-size:20px; line-height:1.55; color:var(--ink-2); max-width:760px; margin:20px 0 0}
+  .meta{margin-top:30px; padding-top:20px; border-top:1px solid var(--line); display:flex; gap:32px; flex-wrap:wrap; font-size:13.5px; color:var(--ink-3)}
+  .meta b{display:block; color:var(--ink); font-weight:600; font-size:14px; margin-bottom:2px}
+  nav{position:sticky; top:0; z-index:20; background:rgba(251,250,248,.93); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; gap:20px; overflow-x:auto; padding-top:14px; padding-bottom:14px}
+  nav a{font-size:13px; color:var(--ink-3); text-decoration:none; white-space:nowrap; font-weight:500; padding-bottom:2px; border-bottom:2px solid transparent}
+  nav a:hover{color:var(--azul); border-color:var(--azul)}
+  section{padding:62px 0; border-bottom:1px solid var(--line)}
+  section.dark{background:var(--ink); color:#F4F2EC}
+  section.dark h2,section.dark h3,section.dark h4{color:#fff}
+  section.dark p,section.dark li,section.dark td{color:#D9D6CE}
+  section.dark .snum{color:#A9B1FF}
+  section.dark .lead{color:#EDEBE5}
+  section.dark th{color:#A5A39B;border-color:#33343C}
+  section.dark td{border-color:#33343C}
+  .snum{font-family:var(--mono); font-size:12px; color:var(--azul); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px}
+  h2{font-family:var(--serif); font-weight:400; font-size:clamp(29px,4vw,42px); line-height:1.1; letter-spacing:-.015em; margin:0 0 16px}
+  h3{font-size:19px; font-weight:650; margin:36px 0 12px}
+  h4{font-size:15px; font-weight:650; margin:0 0 8px}
+  p{margin:0 0 18px; max-width:770px}
+  .lead{font-size:19px; color:var(--ink-2); max-width:760px}
+  ul,ol{max-width:770px; padding-left:22px; margin:0 0 18px}
+  li{margin-bottom:9px}
+  strong{font-weight:650}
+  .resumo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin:30px 0 0;max-width:860px;box-shadow:0 22px 54px -36px rgba(25,30,71,.35)}
+  .resumo .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin-bottom:10px}
+  .resumo ol{margin:0;padding-left:20px;max-width:none}
+  .resumo li{font-size:15.5px;line-height:1.5;margin-bottom:8px}
+  .frase{background:var(--amarelo-soft); border:1px solid #EAD9A6; border-radius:10px; padding:16px 20px; margin:6px 0 28px; max-width:800px}
+  .frase .t{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--amarelo); margin-bottom:6px}
+  .frase p{margin:0; font-size:16px; line-height:1.5}
+  section.dark .frase{background:#26281F;border-color:#4B4A2A}
+  section.dark .frase p{color:#F1EBD2}
+  .quote{border-left:3px solid var(--azul); background:var(--azul-soft); padding:15px 19px; margin:0 0 13px; border-radius:0 8px 8px 0; max-width:810px}
+  .quote p{margin:0; font-size:16px; line-height:1.55; color:var(--ink)}
+  .quote .who{margin-top:8px; font-size:12.5px; color:var(--ink-3); font-family:var(--mono); display:flex; gap:8px; flex-wrap:wrap}
+  .quote .who b{color:var(--ink); font-weight:600}
+  .quote .who .buy{color:var(--verde); font-weight:600}
+  .quote .who .no{color:var(--coral); font-weight:600}
+  .quote.risk{border-color:var(--coral); background:var(--coral-soft)}
+  .quote.team{border-color:var(--amarelo); background:var(--amarelo-soft)}
+  section.dark .quote{background:#1F2026;border-color:#7C86FF}
+  section.dark .quote p{color:#F4F2EC}
+  section.dark .quote .who{color:#A5A39B}
+  section.dark .quote .who b{color:#fff}
+  .uvp{background:#fff;border:1px solid var(--line);border-left:5px solid var(--azul);border-radius:0 16px 16px 0;padding:28px 32px;margin:26px 0;max-width:820px;box-shadow:0 22px 54px -36px rgba(25,30,71,.4)}
+  .uvp .f{font-family:var(--serif);font-size:clamp(26px,3.6vw,36px);line-height:1.15;margin:0}
+  .uvp .m{margin:14px 0 0;font-size:15.5px;color:var(--ink-2)}
+  .uvp.alt{border-left-color:var(--ink-3);box-shadow:none}
+  .tw{overflow-x:auto;margin:22px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:600px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);font-weight:600}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.hl td{background:var(--azul-soft)}
+  tr.no td{background:var(--coral-soft)}
+  tr.ok td{background:var(--verde-soft)}
+  .cap{font-size:12.5px;color:var(--ink-3);margin-top:-12px;margin-bottom:22px;max-width:790px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:24px 0}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+  .card.ok{border-top:4px solid var(--verde)}
+  .card.no{border-top:4px solid var(--coral)}
+  .card.az{border-top:4px solid var(--azul)}
+  .card.am{border-top:4px solid var(--amarelo)}
+  .card ul{padding-left:18px;margin:0}
+  .card li{font-size:15px;margin-bottom:7px}
+  .card p{font-size:15px;margin-bottom:10px}
+  section.dark .card{background:#1F2026;border-color:#33343C}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:26px 0}
+  .stat{background:var(--paper);padding:20px 18px}
+  .stat .n{font-family:var(--serif);font-size:36px;line-height:1}
+  .stat .n.up{color:var(--verde)}.stat .n.down{color:var(--coral)}.stat .n.blue{color:var(--azul)}
+  .stat .l{font-size:12.5px;color:var(--ink-3);margin-top:8px;line-height:1.4}
+  .camadas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:26px 0;max-width:900px}
+  .camada{padding:22px 22px;background:#fff;border-right:1px solid var(--line)}
+  .camada:last-child{border-right:0}
+  .camada .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .camada .k.a{color:var(--azul)}.camada .k.b{color:var(--verde)}.camada .k.c{color:var(--amarelo)}
+  .camada .f{font-family:var(--serif);font-size:22px;line-height:1.2;margin:0 0 10px}
+  .camada p{font-size:14px;margin:0;color:var(--ink-2)}
+  @media(max-width:760px){.camadas{grid-template-columns:1fr}.camada{border-right:0;border-bottom:1px solid var(--line)}}
+  .hook{display:grid;grid-template-columns:110px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 10px;max-width:900px}
+  .hook .lv{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--azul);line-height:1.4;padding-top:3px}
+  .hook .lv small{display:block;color:var(--ink-3);text-transform:none;letter-spacing:0;font-size:10.5px;margin-top:3px}
+  .hook .tx{font-size:16px;line-height:1.45}
+  .hook .tx small{display:block;font-size:12.5px;color:var(--ink-3);margin-top:5px}
+  @media(max-width:600px){.hook{grid-template-columns:1fr}}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;margin-right:6px;background:var(--paper-2);color:var(--ink-3)}
+  .tag.ok{background:var(--verde-soft);color:var(--verde)}
+  .tag.no{background:var(--coral-soft);color:var(--coral)}
+  .tag.az{background:var(--azul-soft);color:var(--azul)}
+  section.dark .camadas{border-color:#33343C}
+  section.dark .camada{background:#1F2026;border-color:#33343C}
+  section.dark .camada .f{color:#fff}
+  section.dark .camada p{color:#D9D6CE}
+  section.dark .uvp{background:#1F2026;border-color:#33343C;box-shadow:none}
+  section.dark .uvp .f{color:#fff}
+  section.dark .uvp .m{color:#D9D6CE}
+  section.dark .uvp.alt{border-left-color:#6E7280}
+  section.dark .hook{background:#1F2026;border-color:#33343C}
+  section.dark .hook .tx{color:#F4F2EC}
+  section.dark .hook .tx small{color:#A5A39B}
+  section.dark .hook .lv{color:#A9B1FF}
+  section.dark .hook .lv small{color:#A5A39B}
+  section.dark .quote.team{background:#26281F;border-color:#B47B00}
+  section.dark .tag{background:#2A2B33;color:#A5A39B}
+  section.dark .tag.ok{background:#173B2C;color:#7ED9B0}
+  section.dark .tag.az{background:#23264A;color:#A9B1FF}
+  footer{padding:48px 0 68px;color:var(--ink-3);font-size:14px}
+  footer p{max-width:900px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker"><span>MyDose</span><span>·</span><b>Posicionamento</b><span>·</span><span>06 set 2026</span><span>·</span><span>v1</span></div>
+    <h1>Credibilidade é o <em>mecanismo</em>. Comunidade é a <em>prova</em>. Resultado é a consequência.</h1>
+    <p class="dek">Um documento no lugar de dois: a Operação Credibilidade (Guga e John, 04/09) cruzada com a tese de comunidade, as duas propostas de valor, a reunião de Jurerê e a base de 587 calls. Sai daqui uma mensagem única, o mecanismo que a sustenta e a estratégia de copy por etapa do funil.</p>
+    <div class="meta">
+      <div><b>Fontes</b>9: o plano do Guga, os 3 áudios de hoje, a reunião de Jurerê (1h), o vídeo do Batista, a tese, a proposta de valor, a cadência, o deck e a base</div>
+      <div><b>Números que não usa</b>os do Pipedrive citados no plano, a pedido do Guga</div>
+      <div><b>Regra</b>afirmação sobre o cliente sai da base, com data e minuto</div>
+      <div><b>Decisões</b>do Guga até 15/09, lista na seção 09</div>
+    </div>
+
+    <div class="resumo">
+      <div class="t">Para ler no celular · 5 linhas</div>
+      <ol>
+        <li><strong>O que fica de pé do seu material:</strong> segurança acima de fama, credibilidade digital como categoria, parceria justificando o preço, uma mensagem só.</li>
+        <li><strong>O que muda:</strong> uma frase sua e do John cai inteira ("validado pelo PubMed": PubMed indexa, não valida, e um médico confere), e o lugar da comunidade, que sai de bônus e vira a prova, porque é o que ele consegue mostrar no dia 7 e o jeito de vender sem parecer que vende.</li>
+        <li><strong>A ordem que nunca quebra:</strong> nenhuma peça fria abre pela conta. Dinheiro entra na call, como "cobrar pelo que você já faz de graça".</li>
+        <li><strong>Manchete recomendada:</strong> "Apareça com segurança. O paciente fica." Testar 14 dias contra a sua, contra a que já vendeu e contra a ideia-mãe ("Apareça sem deixar de ser quem você é."), por custo por reunião realizada.</li>
+        <li><strong>Você decide até 15/09:</strong> manchete, preço do herói (recomendo R$ 990 com o mecanismo dentro, seção 07), quem revisa compliance, as 5 entregas cortáveis, e o que fazer com o nome Scale.</li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#fontes">O que cada fonte disse</a>
+  <a href="#base">O que a base diz</a>
+  <a href="#sintese">A síntese</a>
+  <a href="#mecanismo">O mecanismo</a>
+  <a href="#frameworks">Os frameworks</a>
+  <a href="#copy">Banco de copy</a>
+  <a href="#oferta">A oferta</a>
+  <a href="#funil">O funil e o teste</a>
+  <a href="#decisoes">Decisões</a>
+</div></nav>
+
+<section id="fontes">
+  <div class="wrap">
+    <div class="snum">01 · As fontes</div>
+    <h2>Três vozes, e onde cada uma acerta</h2>
+    <p class="lead">Nada aqui foi inventado. Cada card resume o que a fonte defende, com a frase que a sustenta. A discordância entre elas é menor do que parece, e a seção 03 mostra onde ela some.</p>
+
+    <div class="grid3">
+      <div class="card az">
+        <h4>O John, pelo Guga (04/09 e os áudios de hoje)</h4>
+        <p>Não entrar no jogo de software de gestão. O micro-nicho é produção de conteúdo com validação e segurança. Segurança acima de fama, porque o maior medo é ser achado charlatão. Parceria justifica o ticket. Uma mensagem só, o resto é bônus na reunião.</p>
+        <p>O Guga, hoje, apontou o que pesa, e as frases vão inteiras: <em>"o único sistema que te dá segurança, que te garante um conteúdo validado por PubMed"</em>, <em>"verifica em vários bancos de dados como revistas Nature, Neuroscience Journal, eu acho que esse daí é um bagulho"</em>, <em>"base de conhecimento treinada já, pensando no profissional da saúde, que vai te ajudar a escrever sem falar merda, já te dando as fontes validadas"</em>, e <em>"a entrega do WhatsApp e a entrega do suporte humano justificam ali um preço maior"</em>. A primeira é a única frase do material que precisa cair inteira, e a seção 04 diz por quê. As outras três são o núcleo deste documento.</p>
+        <p>E a ordem: <em>"o mecanismo pra criação de credibilidade digital, de autoridade digital, para profissionais de saúde que buscam credibilidade e aumento de resultado. Mas o resultado é o último, porque eles não querem ser vistos como gananciosos."</em></p>
+      </div>
+      <div class="card ok">
+        <h4>A tese e a proposta de valor (31/08 a 05/09)</h4>
+        <p>Comunidade é a categoria que vendeu: 146 calls, 26% de conversão, R$ 199,7 mil rastreados. A caixa de marketing e conteúdo é a única categoria da base com zero venda em 8 calls. "Demita sua agência" não tem lastro: 3 menções em 587.</p>
+        <p>Duas propostas, em ordem: a emocional abre (<em>"Todo mundo tem consultório. Quase ninguém tem uma comunidade."</em>) e a racional fecha (<em>"O acompanhamento que você já faz de graça vira o seu segundo faturamento."</em>). Invertidas, ele compra empolgado e cancela no mês 3.</p>
+        <p>O Scale entra como motor da comunidade, nunca como promessa de marketing. Isolado, ele vira o Higgsfield ilimitado: usa na semana 1 e cancela no mês 3.</p>
+        <p>Os furos que a própria tese assume, e que valem aqui também: comunidade converteu 0 de 14 entre maio e agosto (o funil inteiro travou, não só a categoria), e <strong>retenção ainda não foi medida</strong>, só prometida. Não existe taxa de permanência das comunidades ativas em documento nenhum.</p>
+      </div>
+      <div class="card am">
+        <h4>Jurerê (04/09, 1h, Guga, Vini e Batista) e o vídeo do Batista</h4>
+        <p>O diagnóstico do que quebrou: <em>"pro profissional da saúde que não é vendedor, que se sente mal até de ganhar dinheiro dos outros, a gente está tentando bater na ambição dele falando pra faturar mais"</em> [00:49]. <em>"Essa mensagem gerou o maior CPA da história"</em> [01:23].</p>
+        <p>O que vendia em janeiro: <em>"a gente vendeu a parceria, a segurança pra ele atingir isso"</em> [01:45]. Por que ele quer comunidade: <em>"um meio para ter dinheiro, fama, segurança, autoridade"</em> [21:21]. <em>"Quando a gente comunicava comunidade, a gente atraía o público certo"</em> [23:03].</p>
+        <p>O limite: <em>"não prometendo a tração, senão a gente entra no ponto de agência de marketing de novo"</em> [46:33]. E o vídeo do Batista fecha o porquê: com 30 produtos, o lead sai da reunião com overdose, e a pergunta que decide é "por que ele vai te responder e não ao concorrente?"</p>
+      </div>
+    </div>
+
+    <div class="frase">
+      <div class="t">O que os três têm em comum, e é o ponto de partida</div>
+      <p>Nenhum deles abre com dinheiro. O John abre com segurança, a tese com comunidade, o Guga com credibilidade. Jurerê explica por quê: quem abriu com "fature mais" pagou o CPA mais caro da história. O que este documento faz é colocar os três na mesma peça, na ordem certa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="base">
+  <div class="wrap">
+    <div class="snum">02 · O que a base diz</div>
+    <h2>O que a base confirma do John, e o que ela acrescenta</h2>
+    <p class="lead">Primeiro as frases, depois a contagem. As frases são literais, com data e minuto. A contagem foi feita hoje nas 587 fichas e serve para não superestimar nem subestimar nenhum medo.</p>
+
+    <h3>O que o John acertou, na voz do cliente</h3>
+    <div class="quote"><p>"eu preciso fazer de uma forma muito... Validada, respaldada. Muito validada, muito respaldada [...] eu tenho muito medo de qualquer coisa do CFM bater na minha porta."</p><div class="who"><b>Dra. Amanda Menezes</b><span>médica</span><span>23/01/2026</span><span>[19:52]</span><span class="no">não fechou</span></div></div>
+    <div class="quote"><p>"o conselho de nutrição é muito complicado... o conselho não permite eu fazer collab. O conselho não permite eu fazer promoção."</p><div class="who"><b>Letícia Martins</b><span>nutricionista</span><span>07/05/2026</span><span>[36:14]</span><span class="no">não comprou</span></div></div>
+    <div class="quote"><p>"eu fico pensando se, por exemplo, essa influencer que não seja nem profissional de saúde... ela também tem acesso a parte de prontuário"</p><div class="who"><b>Dra. Priscilla Fiorelli</b><span>médica</span><span>04/03/2026</span><span>[39:10]</span><span class="no">não comprou</span></div></div>
+    <p class="cap">A terceira é a mais útil: credibilidade, para esse comprador, também é <strong>com quem ele é misturado</strong>. Uma plataforma que aceita influencer sem formação custa credibilidade ao médico que está dentro.</p>
+
+    <h3>O que o John chamou de anticapitalista, na voz do cliente</h3>
+    <div class="quote"><p>"Quando você joga isso para uma comunidade que você está falando ali com todo mundo e todo mundo falando, enfim, fica uma coisa mais natural, legal, entende. Porque eu tenho sério problema que é justamente essa parte de vendas."</p><div class="who"><b>Hélio Trindade</b><span>23/10/2025</span><span>[04:59]</span><span class="no">não comprou</span></div></div>
+    <div class="quote"><p>"Eu não consigo vender aquilo que eu não acredito que seja bom para o meu paciente."</p><div class="who"><b>Dra. Ariane Angeli</b><span>médica</span><span>09/06/2026</span><span>[07:17]</span><span class="no">não comprou</span></div></div>
+    <div class="quote"><p>"são pessoas que ainda estão lutando para combater a mentalidade para vender programa de acompanhamento."</p><div class="who"><b>Dra. Ana Eduarda</b><span>médica, sobre os alunos dela</span><span>11/02/2026</span><span>[01:00:31]</span><span class="buy">comprou</span></div></div>
+    <p class="cap">A frase do Hélio é a ponte entre os dois documentos: <strong>a comunidade é o jeito de vender sem parecer que vende</strong>. É por isso que ela não pode virar bônus. Ela é o que torna a monetização aceitável para quem tem vergonha de cobrar.</p>
+
+    <h3>O medo que nenhum dos dois documentos colocou na manchete</h3>
+    <div class="quote risk"><p>"Pra ser sincero com você, eu não tenho nem 5 pessoas [na comunidade], entendeu? Eu tô até com medo de criar desafio e ficar tão parado, que fica até fazendo vergonha."</p><div class="who"><b>André Chateaubriand</b><span>médico</span><span>19/09/2025</span><span>[50:17]</span><span class="no">não comprou</span></div></div>
+    <div class="quote risk"><p>"eu fico pouco receosa se eu vou conseguir ter essas ideias e se isso vai ser uma demanda que eu vou conseguir realmente, na prática, fazer isso. Porque eu não sou essa pessoa super empreendedora."</p><div class="who"><b>Dra. Maryanne Pessoa</b><span>médica</span><span>28/04/2026</span><span>[39:49]</span><span class="no">não comprou</span></div></div>
+    <div class="quote risk"><p>"Quem é que vai gravar para você? Quem é que vai fazer? Você fica perdido em como colocar."</p><div class="who"><b>Geisiany Monteiro</b><span>30/04/2026</span><span>[37:04]</span><span class="buy">comprou</span></div></div>
+    <div class="quote risk"><p>"Não tenho intenção de colocar mais trabalho pra eu fazer. Eu tenho intenção de que alguém faça pra mim."</p><div class="who"><b>Dra. Ariane Angeli</b><span>médica</span><span>09/06/2026</span><span>[00:20]</span><span class="no">não comprou</span></div></div>
+
+    <h3>A contagem, para dar a cada medo o tamanho certo</h3>
+    <div class="tw"><table>
+      <tr><th>Termo nas fichas</th><th>Fichas (de 587)</th><th>O que isso significa para a mensagem</th></tr>
+      <tr><td>"medo de"</td><td class="num">59</td><td>O medo mais citado é <strong>criar e ninguém aparecer</strong>, e <strong>não conseguir sustentar</strong> a produção.</td></tr>
+      <tr><td>segurança</td><td class="num">52</td><td>Nas frases literais, quase sempre é segurança de dados, certificação ou "insegurança se vão aderir". Segurança para publicar aparece pouco com essa palavra.</td></tr>
+      <tr><td>ética</td><td class="num">43</td><td>A ética aparece como trava para <strong>vender</strong> e para <strong>promover</strong>, mais do que para publicar conteúdo.</td></tr>
+      <tr><td>autoridade</td><td class="num">26</td><td>Só na análise do fichador. <strong>Zero</strong> frases literais registradas com a palavra na boca do lead. As fichas guardam as frases marcantes, não a call inteira, então o dado diz que ninguém foi registrado pedindo autoridade, não que a palavra nunca foi dita.</td></tr>
+      <tr class="hl"><td>conselho</td><td class="num">13</td><td>Real, específico e caro quando aparece: trava a call inteira. Minoria em número, não em peso.</td></tr>
+      <tr><td>científico / embasamento</td><td class="num">11</td><td>Quem cita quer <strong>respaldo</strong> para o que já faz, não conteúdo para postar.</td></tr>
+      <tr><td>credibilidade</td><td class="num">8</td><td>Aparece como credibilidade <strong>por associação</strong>: com quem a plataforma me mistura.</td></tr>
+      <tr><td>compliance</td><td class="num">5</td><td>Quando o lead pergunta e o vendedor não sabe responder, a call esfria na hora (Dra. Suzana, 04/03).</td></tr>
+      <tr><td>vergonha</td><td class="num">4</td><td>Vergonha de cobrar e vergonha de uma comunidade vazia. As duas sustentam a tese do "anticapitalista".</td></tr>
+      <tr><td>CFM · charlatão · PubMed</td><td class="num">2 · 2 · 0</td><td>A frase do John existe na base, literalmente uma vez cada. PubMed não aparece em nenhuma frase registrada de lead.</td></tr>
+    </table></div>
+
+    <div class="frase">
+      <div class="t">A leitura</div>
+      <p>O John descreveu o medo de <strong>aparecer errado</strong>. A base mostra que ele vem acompanhado de dois maiores: <strong>aparecer e ninguém vir</strong>, e <strong>não ter quem produza</strong>. A mensagem de credibilidade sozinha responde ao primeiro. A comunidade responde ao segundo (o paciente que já existe entra, e a comunidade nunca nasce vazia). O Scale com fonte responde ao terceiro. Os três medos, uma peça só. É o que a seção seguinte monta.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sintese" class="dark">
+  <div class="wrap">
+    <div class="snum">03 · A síntese</div>
+    <h2>Uma mensagem, três camadas, uma ordem que não inverte</h2>
+    <p class="lead">A discordância entre os documentos era sobre qual camada vai na manchete. As três aparecem do anúncio ao dia 45, sempre nesta ordem. Numa peça isolada, no topo entra a camada que o nível de consciência dele pede (seção 05). A regra que nunca quebra é uma só: <strong>nenhuma peça fria abre pela conta</strong>.</p>
+
+    <div class="frase">
+      <div class="t">A ideia que amarra as três camadas</div>
+      <p><strong>Aparecer sem deixar de ser quem você é.</strong> Todo caminho oferecido a ele até hoje pedia que ele virasse outra coisa: influenciador, vendedor ou cliente de agência. Este não pede. Ele continua médico, nutricionista, educador. Só passa a ser visto, e o paciente passa a ficar.</p>
+    </div>
+
+    <div class="camadas">
+      <div class="camada"><div class="k a">1 · abre</div><div class="f">Credibilidade</div><p>Segurança para aparecer como o profissional que ele já é. É o argumento racional do John e a permissão que a Amanda pediu: validado, respaldado. É a camada padrão de toda peça fria e abre os 5 primeiros minutos de toda call.</p></div>
+      <div class="camada"><div class="k b">2 · prova</div><div class="f">Comunidade</div><p>O que ele ganha e o que ele mostra: um lugar com o nome dele onde o paciente fica. É a categoria que atraiu o público certo e o jeito de vender sem parecer que vende. Ocupa a LP, o pós-agendamento e a demo.</p></div>
+      <div class="camada"><div class="k c">3 · fecha</div><div class="f">A conta</div><p>O acompanhamento que ele já faz de graça vira o segundo faturamento. Entra por último, na call, com os números dele, e entra como justiça: ele já faz, só não recebe. Nunca aparece em anúncio.</p></div>
+    </div>
+
+    <div class="uvp">
+      <p class="f">Para o profissional de saúde que quer ser reconhecido pelo que já sabe, sem virar influenciador e sem arriscar o conselho, o MyDose é o mecanismo de credibilidade digital da saúde: conteúdo que nasce de fonte científica, passa pelas normas do conselho dele e vira uma comunidade de pacientes com o nome dele.</p>
+      <p class="m">Diferente da agência, que promete lead e nunca leu o código de ética da área, e da IA genérica, que não sabe o que é o CFM, o MyDose faz com ele e não cobra porcentagem sobre o que ele vende.</p>
+    </div>
+
+    <h3>Por que essa ordem e não a inversa</h3>
+    <ul>
+      <li><strong>Credibilidade abre porque é a única camada que não pede nada dele.</strong> Comunidade pede que ele convide gente. Conta pede que ele cobre. Credibilidade só pede que ele continue sendo quem é. É a promessa de menor atrito, e é a que o John chamou de segurança.</li>
+      <li><strong>Comunidade prova porque é a única coisa que ele consegue mostrar no dia 7.</strong> A proposta de valor emocional já mediu isso: o time to value racional leva 45 dias e depende do paciente pagar. O emocional leva uma semana e depende só de a comunidade existir com o nome dele.</li>
+      <li><strong>A conta fecha porque, aberta, ela vira "fature mais".</strong> Jurerê [00:49] e a base dizem a mesma coisa: quem tem vergonha de cobrar não responde a apelo de ambição. Mas responde a "você já faz de graça". A frase racional da proposta de valor já está no registro certo: não é ganhar mais, é parar de trabalhar de graça.</li>
+    </ul>
+
+    <h3>O que cada documento decide</h3>
+    <div class="tw"><table>
+      <tr><th>Ponto</th><th>John</th><th>Tese</th><th>Aqui</th></tr>
+      <tr><td>Manchete</td><td>Apareça com segurança</td><td>Crie a comunidade dos seus pacientes</td><td><strong>A metade do John abre, a promessa da tese fecha:</strong> "Apareça com segurança. O paciente fica." Ver as candidatas na seção 06.</td></tr>
+      <tr><td>O Scale</td><td>É o herói, comunidade é bônus</td><td>É o motor da comunidade, nunca a mensagem</td><td><strong>É o mecanismo.</strong> Scale continua sendo o nome do produto na demo e na tabela. Na copy, o que aparece é o mecanismo (Conteúdo com Fonte), e a promessa nunca é "conteúdo": é credibilidade e paciente que fica.</td></tr>
+      <tr><td>A comunidade</td><td>Bônus na reunião</td><td>A categoria</td><td><strong>A prova.</strong> Não é bônus porque é o que ele mostra no dia 7 e o que torna a venda aceitável (Hélio).</td></tr>
+      <tr><td>Tração / lead</td><td>Comunicar atração e captação</td><td>Nunca prometer lead</td><td><strong>Atração é mecanismo, não promessa.</strong> "Você tem tudo para atrair" pode; "vai atrair X pacientes" não pode até haver case com número (Jurerê [49:08]).</td></tr>
+      <tr><td>A agência</td><td>Âncora: R$ 3 mil sem ler o código</td><td>Não brigar: o ICP não tem agência</td><td><strong>Fora do anúncio, dentro da call</strong>, só quando o lead disser que tem agência. Âncora de preço, não inimigo.</td></tr>
+      <tr><td>Dinheiro</td><td>Nunca abre</td><td>Racional fecha</td><td>Concordam. <strong>Entra por último, como justiça.</strong></td></tr>
+      <tr><td>Psicólogo</td><td>Persona de novembro</td><td>Fora desta leva</td><td><strong>Fora do anúncio nesta leva.</strong> Se entrar, é com modo individual e com a frase que a persona ditou (seção 06).</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section id="mecanismo">
+  <div class="wrap">
+    <div class="snum">04 · O mecanismo</div>
+    <h2>Conteúdo com Fonte: fonte, norma, nome</h2>
+    <p class="lead">Mensagem de credibilidade sem mecanismo verificável é só mais uma promessa. O mercado de marketing médico está no estágio em que todo mundo promete autoridade, e a única saída (Schwartz, sofisticação de mercado) é mostrar <strong>como</strong>. Mecanismo tem dois lados: o do problema, que explica por que nada funcionou até hoje, e o da solução, que tem que ser visível no próprio post.</p>
+
+    <h3>O mecanismo do problema: por que ele ainda não aparece</h3>
+    <div class="frase">
+      <div class="t">A causa raiz, dita para ele</div>
+      <p>Não é falta de tempo e não é preguiça. É que todo caminho oferecido a você até hoje pedia que você deixasse de ser médico para virar outra coisa: influenciador, vendedor ou cliente de agência. E enquanto o que você publica não puder ser conferido por quem lê, publicar continua sendo risco. O problema nunca foi produzir. Foi produzir sem deixar de ser quem você é.</p>
+    </div>
+    <p>É essa frase que tira a culpa dele e que faz as quatro manchetes da seção 06 falarem da mesma coisa. Sem ela, "credibilidade" é alegação de funcionalidade.</p>
+
+    <h3>O mecanismo da solução: fonte, norma, nome</h3>
+    <div class="grid3">
+      <div class="card az"><h4>1 · Fonte</h4><p>Todo conteúdo nasce de uma referência indexada, e a referência aparece no post: no canto do card, na descrição do vídeo, no rodapé do e-book. É o artefato que o lead pode conferir sem confiar em ninguém.</p></div>
+      <div class="card az"><h4>2 · Norma</h4><p>Antes de ir ao ar, passa pelo checklist do conselho da área: o que pode e o que não pode em publicidade médica, de nutrição, de psicologia. O checklist ainda não existe: será escrito com o Dr. Arthur e vira um documento que o cliente recebe.</p></div>
+      <div class="card az"><h4>3 · Nome</h4><p>O conteúdo publica com o nome dele, na comunidade dele, com a marca dele. A IA se apresenta como assistente da comunidade, nunca como ele. O histórico é dele e sai com ele se cancelar.</p></div>
+    </div>
+
+    <h3>As duas frases que o mecanismo proíbe</h3>
+    <div class="grid2">
+      <div class="card no"><h4>"Validado pelo PubMed"</h4><p>Essa frase é sua e do John (áudio das 17:21), e é a única do material que precisa cair inteira. PubMed é um índice. Não valida, não revisa, não aprova. Um médico lê isso e conclui que quem escreveu não sabe o que é PubMed. Escrever: <strong>"cada conteúdo nasce de um artigo indexado, com a referência citada"</strong>. Trocada, a ideia sobrevive e para de dar munição ao primeiro médico que conferir.</p></div>
+      <div class="card no"><h4>"Aprovado pelo conselho"</h4><p>Conselho não aprova post. Prometer isso é prometer o que não existe, e o plano do John já listou o risco: "cliente pergunta quem revisa". Escrever: <strong>"revisado contra o código do seu conselho"</strong>, e ter o checklist pronto antes de qualquer anúncio dizer isso.</p></div>
+    </div>
+
+    <h3>O que o mecanismo obriga</h3>
+    <ul>
+      <li><strong>O checklist por conselho existe antes do primeiro anúncio, e está decidido se a revisão é humana ou automática.</strong> "Revisado contra o código do seu conselho" é verificável e nomeia norma. Se quem revisa é um prompt, a frase expõe mais do que a que foi proibida. Sem processo, a frase "dentro das normas" é a mesma promessa vazia que o mercado inteiro faz. É a dependência dura deste documento.</li>
+      <li><strong>Nenhum anúncio nomeia revista até existir a lista real das bases que o Scale consulta.</strong> "Nature" e "Neuroscience Journal" entraram no áudio como exemplo de entusiasmo. Em anúncio, viram afirmação verificável. Essa lista não existe em documento nenhum e é decisão de produto.</li>
+      <li><strong>A referência aparece na demo da call.</strong> O áudio do lead vira post com a fonte no canto, na hora. É a prova ao vivo que o John descreveu e o "momento de pico" que a base mostra funcionar com IA ao vivo.</li>
+      <li><strong>O mecanismo nunca vira a promessa.</strong> "Conteúdo com fonte" é o como. A promessa continua sendo credibilidade e paciente que fica. Se a peça vender o mecanismo, ela vira anúncio de ferramenta de conteúdo, e essa caixa tem zero venda na base.</li>
+      <li><strong>O nome é decisão do Guga.</strong> "Conteúdo com Fonte" é a recomendação por ser literal e por caber no post. A alternativa "Protocolo de Publicação" soa mais clínica, mas exige explicação.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="frameworks">
+  <div class="wrap">
+    <div class="snum">05 · Os frameworks, aplicados</div>
+    <h2>Cinco frameworks, cada um decidindo uma coisa</h2>
+    <p class="lead">Nenhum framework aparece aqui por enfeite. Cada um resolve uma decisão que os dois documentos deixaram em aberto, e o resultado dele já está na copy da seção 06.</p>
+
+    <h3>Schwartz · nível de consciência decide o hook</h3>
+    <div class="tw"><table>
+      <tr><th>Nível</th><th>O que ele sabe</th><th>O hook fala de</th><th>Frase que já existe</th></tr>
+      <tr><td>Inconsciente</td><td>Nada. Está rolando o feed.</td><td>Identificação: alguém como ele, fazendo o que ele não faz</td><td>"Tem gente com metade da sua formação e o dobro da sua audiência."</td></tr>
+      <tr><td>Consciente do problema</td><td>Sabe que precisa aparecer e trava</td><td>Nomear o medo certo</td><td>"Você não tem medo de aparecer. Você tem medo de aparecer errado."</td></tr>
+      <tr class="hl"><td>Consciente da solução</td><td>Sabe que comunidade existe, viu colegas</td><td>Distinção e posse</td><td>"Todo mundo tem consultório. Quase ninguém tem uma comunidade."</td></tr>
+      <tr><td>Consciente do produto</td><td>Já ouviu falar do MyDose</td><td>O mecanismo</td><td>"Cada post nasce de um artigo e passa pelas normas do seu conselho antes de ir ao ar."</td></tr>
+      <tr><td>Mais consciente</td><td>Já fez diagnóstico ou call</td><td>A oferta e o prazo</td><td>"Comunidade no ar em 7 dias, com o seu nome. 30 dias de garantia." (só na call, até medir o onboarding)</td></tr>
+    </table></div>
+    <p class="cap">Sofisticação de mercado: "fature mais" é uma afirmação de estágio 1 num mercado que já está no estágio 5, em que toda agência promete a mesma coisa. Por isso o CPA explodiu. No estágio 5 só funcionam identificação e mecanismo, que são as duas linhas destacadas.</p>
+
+    <h3>StoryBrand · a narrativa da LP, do evento e da call</h3>
+    <div class="tw"><table>
+      <tr><th>Peça</th><th>Aqui</th></tr>
+      <tr><td>Herói</td><td>O profissional que estudou dez anos para cuidar de gente.</td></tr>
+      <tr><td>Problema externo</td><td>Não aparece, e o paciente some na terceira semana.</td></tr>
+      <tr><td>Problema interno</td><td>Medo de aparecer errado. Vergonha de cobrar.</td></tr>
+      <tr><td>Problema filosófico</td><td>Cuidar de gente não deveria exigir virar influenciador nem vendedor.</td></tr>
+      <tr><td>Vilão</td><td>O achismo (o guru sem fonte) e o silêncio entre uma consulta e outra.</td></tr>
+      <tr><td>Guia</td><td>Empatia: "a gente concorda com você". Autoridade: um médico no comando clínico e um case do mesmo porte e nicho. (Os 238 clientes e as 587 conversas são fatos internos. Ditos ao lead, o segundo soa a vigilância, não a autoridade.)</td></tr>
+      <tr><td>Plano</td><td>Fonte, norma, nome. Três passos, sempre os mesmos.</td></tr>
+      <tr><td>Chamada</td><td>"Quero meu diagnóstico". Nunca "grátis", nunca "teste".</td></tr>
+      <tr><td>Fracasso</td><td>Continuar invisível enquanto quem tem metade da formação publica. Continuar respondendo WhatsApp de paciente à noite, de graça.</td></tr>
+      <tr><td>Sucesso</td><td>Reconhecido pelo que já sabe. Uma comunidade com o nome dele. Uma conta que fecha sem abrir horário.</td></tr>
+    </table></div>
+
+    <h3>Equação de valor · onde a oferta tira atrito</h3>
+    <div class="grid2">
+      <div class="card ok"><h4>Sobe o numerador</h4><ul><li><strong>Resultado sonhado:</strong> ser reconhecido pelo que já sabe. Nunca "autoridade" como adjetivo: nenhuma ficha registrou a palavra numa frase literal do lead.</li><li><strong>Probabilidade percebida:</strong> a fonte visível no post, o checklist do conselho na mão, um case do mesmo porte e nicho, garantia de 30 dias.</li></ul></div>
+      <div class="card ok"><h4>Desce o denominador</h4><ul><li><strong>Tempo até o valor:</strong> vitrine no dia 7 (comunidade com o nome dele e o primeiro post com fonte). Conta no dia 45. O onboarding entrega a vitrine antes da operação.</li><li><strong>Esforço:</strong> ele aprova, não escreve. "Dez minutos por dia" é a promessa do John: medir o tempo real de aprovação antes de ela ir para anúncio. "A gente faz com você" é a linha que vendeu em janeiro.</li></ul></div>
+    </div>
+
+    <h3>Dunford · a categoria, fechada numa tabela</h3>
+    <div class="tw"><table>
+      <tr><th>Alternativa que ele considera</th><th>O que ela faz</th><th>O que só o MyDose faz</th></tr>
+      <tr><td>Agência (R$ 3 mil)</td><td>Promete lead, nunca leu o código de ética, some quando o contrato acaba</td><td>Fonte citada e checklist do conselho em todo conteúdo</td></tr>
+      <tr><td>IA genérica</td><td>Escreve qualquer coisa, sem saber o que é CFM</td><td>Base treinada para saúde, com a referência na saída</td></tr>
+      <tr><td>Prontuário (R$ 49 a 120)</td><td>Guarda a consulta, não faz ninguém aparecer nem ficar</td><td>Comunidade gamificada com o nome dele, onde o paciente fica</td></tr>
+      <tr><td>Curso de marketing médico</td><td>Ensina e vai embora</td><td>Time que faz com ele, toda semana</td></tr>
+      <tr><td>Grupo de WhatsApp</td><td>Grátis, e vira caos em um mês</td><td>Tarefa do dia, ranking desligável, IA que responde o que é rotina, sem porcentagem sobre o que ele vende</td></tr>
+    </table></div>
+    <p class="cap">Categoria: <strong>mecanismo de credibilidade digital para a saúde</strong>. Não é software de gestão (o John tem razão: isso custa R$ 49) e não é agência (a tese tem razão: essa caixa não vende). Para quem: médico, nutricionista e educador físico com o piso de 40 a 65 pacientes ativos que o corte de ICP mediu. Não é o número de 20 que o corte anterior usou.</p>
+
+    <h3>Jobs to be done · a frase de cada persona, com a reação que ela teve</h3>
+    <div class="tw"><table>
+      <tr><th>Persona</th><th>Quando... quero... para...</th><th>Reação ao deck (05/09)</th></tr>
+      <tr class="ok"><td>Médico que bateu o teto</td><td>Quando a agenda lota, quero cobrar pelo acompanhamento que já faço, sem abrir horário e sem parecer que virei vendedor.</td><td>Comprou pela emocional. "A R$ 890 o ego basta sozinho."</td></tr>
+      <tr class="ok"><td>Nutricionista que perde o paciente no mês 2</td><td>Quando o paciente some, quero que algo continue com ele sem eu produzir tudo à mão.</td><td>Comprou pela racional. "É literalmente a minha terça-feira." Reprovou a emocional: comunidade em nutrição é lugar-comum, o eixo é permanência.</td></tr>
+      <tr class="no"><td>Psicóloga</td><td>Quando quero ser encontrada, quero conteúdo dentro do código do CFP e um espaço onde meus pacientes não se vejam.</td><td>Talvez. Nenhuma das duas frases. Ela mesma ditou a dela: "A sessão dura cinquenta minutos. A semana do seu paciente dura sete dias."</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section id="copy" class="dark">
+  <div class="wrap">
+    <div class="snum">06 · Banco de copy</div>
+    <h2>Manchetes, hooks e o léxico único</h2>
+    <p class="lead">Tudo abaixo respeita a ordem da seção 03 e as duas proibições da seção 04. O que veio do John está marcado, o que veio da tese está marcado, o que é novo está marcado. Nada com número sem fonte.</p>
+
+    <h3>As manchetes para o teste, e uma para o remarketing</h3>
+    <p>Regra que vale para as quatro: <strong>promessa na manchete, mecanismo no sub</strong>. Manchete que vende o mecanismo cai na caixa de ferramenta de conteúdo, que tem zero venda na base. Por isso "Conteúdo com fonte" não abre peça fria.</p>
+    <div class="uvp">
+      <p class="f">Apareça com segurança. O paciente fica.</p>
+      <p class="m"><span class="tag ok">recomendada · A</span> Sub: "Cada post nasce de um artigo indexado, passa pelo checklist do seu conselho e vira uma comunidade de pacientes com o seu nome." A primeira oração é do John, palavra por palavra. A segunda é a promessa da tese. Duas promessas, zero mecanismo, zero dinheiro. Contra a B, testa se "paciente que fica" puxa mais reunião do que "credibilidade" como prêmio.</p>
+    </div>
+    <div class="uvp alt">
+      <p class="f">Apareça com segurança. Cresça com credibilidade.</p>
+      <p class="m"><span class="tag az">John · B</span> Boa cadência, ritmo de manifesto. Fraqueza no teste dos 4U: não é específica e "cresça" é a palavra mais próxima de dinheiro que a manchete pode ter. Entra no teste como está, com o mesmo sub da A.</p>
+    </div>
+    <div class="uvp alt">
+      <p class="f">Todo mundo tem consultório. Quase ninguém tem uma comunidade.</p>
+      <p class="m"><span class="tag az">tese · C</span> A única das quatro já testada com compradores-persona: médico e médica compraram por ela. Fraqueza conhecida: em nutrição, comunidade é lugar-comum e a frase perde força. Entra no teste como está, no mesmo público das outras: a aposta é que parte do público frio já viu um colega com comunidade e responde à distinção antes de responder à segurança.</p>
+    </div>
+    <div class="uvp alt">
+      <p class="f">Apareça sem deixar de ser quem você é.</p>
+      <p class="m"><span class="tag az">ideia-mãe · D</span> A ideia da seção 03 virando manchete, com o mesmo sub da A. Promessa pura, zero mecanismo, zero dinheiro, e é a única das quatro que responde ao medo de virar influenciador sem citar influenciador. Se a verba só banca três células, entra no lugar da B, que é a mais fraca nos 4U.</p>
+    </div>
+    <div class="uvp alt">
+      <p class="f">Conteúdo com fonte. Comunidade com o seu nome.</p>
+      <p class="m"><span class="tag az">remarketing · nível produto</span> É o mecanismo, então só serve para quem já ouviu a promessa: quem clicou e não agendou, quem fez o diagnóstico e não apareceu. Nunca em tráfego frio.</p>
+    </div>
+    <div class="frase">
+      <div class="t">Gate antes de qualquer célula ir ao ar</div>
+      <p>Nenhuma das quatro vai para a mídia antes de duas coisas: o checklist do conselho da especialidade que abre a leva existir, e estar decidido se a revisão é humana ou automática. O sub das quatro diz "passa pelo checklist do seu conselho", e isso é verificável. Verificável só se promete com processo.</p>
+    </div>
+
+    <h3>Hooks de 0 a 3 segundos, por nível e por persona</h3>
+    <div class="hook"><div class="lv">Inconsciente<small>identificação · John</small></div><div class="tx">Tem gente com metade da sua formação e o dobro da sua audiência. Não é injustiça. É que ela publica toda semana e você trava.<small>Prova visual: feed com quatro perfis no mesmo trend.</small></div></div>
+    <div class="hook"><div class="lv">Problema<small>reframe · John</small></div><div class="tx">Você não tem medo de aparecer. Você tem medo de aparecer errado. Existe um jeito de aparecer certo.<small>Prova visual: post genérico ao lado de post com a referência no canto.</small></div></div>
+    <div class="hook"><div class="lv">Problema<small>vergonha de vender · novo, da base</small></div><div class="tx">Você não precisa vender para o seu paciente. Precisa continuar com ele depois da consulta.<small>Responde ao Hélio [04:59] e à Ariane [07:17]. Prova visual: o check-in do paciente chegando no celular dele às 21h.</small></div></div>
+    <div class="hook"><div class="lv">Solução<small>distinção · tese</small></div><div class="tx">Todo mundo tem consultório. Quase ninguém tem uma comunidade.<small>Prova visual: a comunidade com o nome de um cliente real, do mesmo porte.</small></div></div>
+    <div class="hook"><div class="lv">Solução<small>nutricionista · John</small></div><div class="tx">Seu paciente tem uma hora com você e 720 sem você. Quem cuida das outras 720 é a sua comunidade.<small>Prova visual: tarefa do dia sendo marcada no app.</small></div></div>
+    <div class="hook"><div class="lv">Solução<small>nutricionista · persona</small></div><div class="tx">Você já teve uma comunidade. O que faltou foi ela continuar viva sem você.<small>É a frase que a nutricionista-persona ditou. Permanência, não raridade.</small></div></div>
+    <div class="hook"><div class="lv">Produto<small>mecanismo · John, corrigido</small></div><div class="tx">Dá para publicar toda semana sem risco com o conselho? Dá. Cada post nasce de um artigo e passa pelo checklist do seu conselho antes de ir ao ar.<small>Sem "aprovado", sem "validado". Prova visual: a referência aparecendo no canto do card.</small></div></div>
+    <div class="hook"><div class="lv">Produto<small>credibilidade por associação · novo, da base</small></div><div class="tx">Aqui só entra quem tem registro no conselho. A sua credibilidade não divide a sala com quem não estudou.<small>Responde à Priscilla [39:10]. Só pode ir ao ar se for verdade no cadastro.</small></div></div>
+    <div class="hook"><div class="lv">Mais consciente<small>oferta</small></div><div class="tx">Sua comunidade no ar em 7 dias, com o seu nome e o primeiro conteúdo com fonte publicado. Se não servir, 30 dias de garantia.<small>Só para remarketing de quem já fez diagnóstico, e só depois de medir o tempo real de onboarding dos últimos clientes. Hoje "7 dias" é promessa de call, não de anúncio.</small></div></div>
+    <div class="hook"><div class="lv">Psicologia<small>fora desta leva · persona</small></div><div class="tx">A sessão dura cinquenta minutos. A semana do seu paciente dura sete dias.<small>Emoção sem status, que é a única forma que funciona nessa especialidade. Só com modo individual ligado.</small></div></div>
+
+    <h3>O manifesto do John, com dois ajustes</h3>
+    <div class="quote team"><p>Você estudou dez anos para cuidar de gente. Ninguém te ensinou a ser visto.<br>Então você olha o feed e vê gente com metade da sua formação falando com o dobro do seu público. E pensa: não vou me expor, não vou virar influenciador, não vou correr risco com o conselho.<br>A gente concorda com você. Por isso construiu o contrário de um guru: conteúdo que começa na fonte, passa pelas normas do seu conselho, chega no seu WhatsApp para você aprovar e termina numa comunidade com o seu nome, onde o paciente fica.<br>Aparecer com segurança não é vaidade. É cuidar de mais gente, cuidando melhor.<br>Take back control.</p><div class="who"><b>Ajustes</b><span>"máquina de conteúdo" saiu (é a caixa que não vende)</span><span>"paciente no seu WhatsApp" (promessa de lead) virou "chega no seu WhatsApp para você aprovar" (a entrega que o Guga citou) mais "comunidade com o seu nome, onde o paciente fica"</span></div></div>
+
+    <h3>Léxico único</h3>
+    <div class="grid2">
+      <div class="card ok"><h4>Sempre</h4><ul><li>fonte · a referência citada · dentro das normas do seu conselho · revisado contra o código do seu conselho</li><li>segurança para aparecer · reconhecido pelo que já sabe · como o profissional que você já é</li><li>comunidade com o seu nome · o paciente fica · entre uma consulta e outra · engajar (é a palavra dele, "retenção" não é)</li><li>cobrar pelo que você já faz de graça · sem abrir horário · sem porcentagem sobre o que você vende</li><li>a IA escreve o rascunho, você aprova, o nome é seu · chega no seu WhatsApp para aprovar · gente de verdade do outro lado</li><li>a gente faz com você · o diagnóstico do seu consultório · Take back control. (assinatura da marca, já no site e no deck; fica em inglês porque é assinatura e não copy, e é a única exceção à regra do jargão)</li></ul></div>
+      <div class="card no"><h4>Nunca</h4><ul><li>fature mais · ganhe dinheiro · receita (na abertura de qualquer peça)</li><li>autoridade e referência como adjetivo prometido ("seja uma autoridade")</li><li>validado pelo PubMed · aprovado pelo conselho · compliance garantido</li><li>demita sua agência · brigar com agência em anúncio</li><li>lead, tráfego, funil, CRM, squad na abertura</li><li>máquina de conteúdo como promessa · 14 funcionalidades · qualquer lista</li><li>"seus pacientes viram fãs" · "gravar a sessão" para psicologia</li><li>a IA fala como você · conteúdo automático · a IA publica por você (o site já diz "a IA alimenta, você aprova", nunca "publica sozinha")</li><li>Scale como palavra de anúncio: é nome de produto para a demo e a tabela; na copy, o que aparece é o mecanismo</li><li>"ficam com você", "fique com o seu paciente" e qualquer forma de ficar com pessoa: o verbo tem outro sentido em português e o leitor é médico</li><li>número sem fonte (os 40% em grupo, as barras de abandono, os 2 a 5% contra 15 a 25%)</li><li>travessão</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="snum">07 · A oferta</div>
+    <h2>Um herói com o mecanismo dentro, e cinco entregas para cortar</h2>
+    <p class="lead">O John descreveu o empilhamento: valor primeiro, oferta, bônus nomeados, garantia, escassez real. Jurerê acrescentou a peça que faltava: <em>"vamos pegar umas 5 coisinhas que não são vitais e sempre colocar, pra sempre ter o que cortar"</em> [23:45]. Assim a negociação nunca encosta na entrega principal.</p>
+
+    <div class="tw"><table>
+      <tr><th>Camada do empilhamento</th><th>O que é</th><th>Regra</th></tr>
+      <tr><td>Valor antes de vender</td><td>O diagnóstico do consultório dele com os números que ele trouxe, e um post com fonte gerado com o nome dele durante a call</td><td>É o que o vídeo do Batista chamou de "gerar valor antes que ele te responda". Sem isso, a call é uma demo.</td></tr>
+      <tr class="hl"><td>O herói</td><td>Comunidade com o nome dele + Conteúdo com Fonte (produção, revisão pelo checklist, publicação) + time que faz com ele</td><td>Sempre o mesmo, apresentado como caminho, não como tabela. O vendedor mostra um plano, não três: Solo, Co-Pilot e Auto-Pilot são nomes de tabela, e na call o Solo só abre como saída e o Auto-Pilot só quando o lead já tem demanda.</td></tr>
+      <tr><td>Bônus nomeados</td><td>App do paciente com a marca dele · prontuário e gravação com resumo por IA · School completa · checkout sem porcentagem · migração feita por nós</td><td>Cada um com preço de referência do mercado (prontuário: R$ 90 a 120 por profissional, Jurerê [32:49]). Aparecem na demo e na tabela, nunca na abertura.</td></tr>
+      <tr><td>As 5 entregas cortáveis</td><td>Peças que não mudam o resultado dele e que o vendedor pode tirar para baixar o preço</td><td>Definir a lista com o Guga. Candidatas: newsletter, segunda rodada de criativos, e-book extra, evento mensal, sessão extra de estrategista.</td></tr>
+      <tr><td>Garantias</td><td>30 dias · sem fidelidade-armadilha · sigilo, ética e LGPD · sem porcentagem sobre as vendas dele · o histórico sai com ele</td><td>As mesmas do John. A última é a que a psicóloga e o médico pediram.</td></tr>
+      <tr><td>Escassez honesta</td><td>Vagas de implementação por mês, no número real da capacidade do time</td><td>Nunca contador falso. Bônus de decisão: implementação prioritária em 7 dias.</td></tr>
+    </table></div>
+
+    <h3>O que sustenta um preço maior</h3>
+    <p>Não é a quantidade de funcionalidades: a lista de 14 foi o que quebrou a mensagem. São as três coisas que o Guga nomeou no áudio, na ordem dele, e que o concorrente de R$ 49 não consegue copiar:</p>
+    <div class="grid3">
+      <div class="card az"><h4>1 · A entrega no WhatsApp</h4><p>O conteúdo chega pronto no WhatsApp dele para aprovar. Ele não abre painel, não aprende ferramenta, não lembra de entrar. Responde "ok" e o post sai com o nome dele.</p></div>
+      <div class="card az"><h4>2 · O suporte humano</h4><p>Tem gente de verdade do outro lado quando ele trava, no grupo dele, respondendo onde ele já está. É o "a gente faz com você" que vendeu em janeiro [01:45], e é o que a Ariane pediu: "que alguém faça pra mim".</p></div>
+      <div class="card az"><h4>3 · A fonte no post</h4><p>A referência está no conteúdo antes de ele publicar. É o que nenhuma agência entrega e nenhuma IA genérica sabe fazer para saúde.</p></div>
+    </div>
+    <p>Na call, em uma frase: <em>"Você não está comprando um sistema. Está comprando um time que produz com você, com a fonte no post, e responde onde você já está."</em></p>
+
+    <h3>A recomendação de preço, com as premissas ditas</h3>
+    <p><strong>Herói a R$ 990 no anual, com o mecanismo dentro</strong> (produção com fonte, revisão pelo checklist, entrega no WhatsApp, suporte humano em grupo), como o plano do John propõe. Não R$ 890: o Co-Pilot de hoje tem a criação de conteúdo riscada com X, e a nutricionista-persona pegou isso em 05/09 ("a promessa da capa está riscada no plano dela"). Manchete de credibilidade com o mecanismo fora do plano é promessa que o próprio deck desmente.</p>
+    <p>Solo a R$ 390 fica como saída, nunca apresentado na call para quem está no ICP: Jurerê mostrou que ele não atende quem tem menos de 10 pacientes [31:30], e o corte de ICP mostrou que R$ 1.000 só cabe a partir de 40 a 65 pacientes ativos. Auto-Pilot para quem já tem demanda e quer capturar melhor (R$ 1.990 no plano do John, R$ 2.490 no deck de ontem: mais uma divergência para fechar junto com o preço do herói).</p>
+    <p>Dois números faltam para essa recomendação virar decisão, e nenhum dos dois existe em documento: <strong>o custo real de atendimento por cliente por mês</strong> (o suporte humano é o argumento de preço e também o maior custo) e <strong>a capacidade do time em clientes simultâneos</strong>, que é o lastro da "escassez honesta" da tabela acima. Sem eles, a escassez está escrita sem número e o preço está escolhido sem margem.</p>
+
+    <h3>A ordem da call, em 45 minutos</h3>
+    <ol>
+      <li><strong>0 a 5 · Emoção.</strong> "Você chegou por um anúncio nosso. Deixa eu te mostrar o caminho que você fez até aqui." E a frase de distinção: quase ninguém tem uma comunidade.</li>
+      <li><strong>5 a 15 · Diagnóstico.</strong> As perguntas do bastidor. Como faz conteúdo hoje, quem produz, o que acontece com o paciente entre consultas, quantos pacientes ativos, qual o faturamento.</li>
+      <li><strong>15 a 25 · Prova ao vivo.</strong> Um áudio dele vira post com a referência no canto, na hora. Três telas, no máximo.</li>
+      <li><strong>25 a 35 · A comunidade dele.</strong> O prédio com os números dele, e só os andares que o diagnóstico justificou. "Tudo que você precisa é nada do que você não precisa" [12:12].</li>
+      <li><strong>35 a 45 · A conta e a oferta.</strong> O acompanhamento que ele já faz de graça, em reais, no preço dele. Depois o empilhamento, as garantias, o bônus de decisão. Se não fechou: proposta de uma página no WhatsApp e convite ao evento do mês.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="funil">
+  <div class="wrap">
+    <div class="snum">08 · O funil e o teste</div>
+    <h2>Onde cada camada entra, do anúncio ao dia 45</h2>
+    <p class="lead">O erro que o vídeo do Batista descreveu é mostrar tudo em todo lugar. A tabela diz qual camada cada etapa carrega, e o que a etapa entrega para ele responder.</p>
+
+    <div class="tw"><table>
+      <tr><th>Etapa</th><th>Camada</th><th>O que ele recebe</th><th>De onde veio</th></tr>
+      <tr><td>Anúncio (0 a 3 s)</td><td>A que o nível dele pede: credibilidade no frio, comunidade para quem já viu um colega com uma. Nunca a conta</td><td>O hook do nível dele e a prova visual: a referência no canto do post, ou a comunidade com o nome de um cliente real</td><td>John, Schwartz</td></tr>
+      <tr><td>LP e typebot</td><td>Comunidade</td><td>O que ele ganha, em quatro opções no máximo. Nunca "faturar mais"</td><td>Tese, regra de poucas opções</td></tr>
+      <tr><td>Primeiros 5 minutos</td><td>Credibilidade</td><td>T1 cita a resposta dele. T2 entrega um rascunho de post com fonte, no nome dele, editável, com a origem declarada na primeira linha</td><td>Jurerê [42:32], cadência de ontem, vídeo do Batista</td></tr>
+      <tr><td>Pós-agendamento</td><td>Comunidade</td><td>A comunicação muda: vídeo da comunidade de alguém do mesmo porte e nicho. "O cara agendou, muda a comunicação" [41:57]</td><td>Jurerê</td></tr>
+      <tr><td>Call (45 min)</td><td>As três, nesta ordem</td><td>Emoção, diagnóstico, prova ao vivo, a comunidade dele, a conta</td><td>Seção 07</td></tr>
+      <tr><td>Dia 7</td><td>Comunidade</td><td>A vitrine: comunidade com o nome dele e o primeiro post com fonte publicado. Marco medível: ele compartilha o link com alguém que não é paciente. O prazo de 7 dias só vai para anúncio depois de medido o tempo real de onboarding</td><td>Proposta de valor emocional</td></tr>
+      <tr><td>Dia 45</td><td>A conta</td><td>O primeiro pagamento recorrente de paciente cai na conta dele. É o marco anti-churn</td><td>Proposta de valor racional</td></tr>
+    </table></div>
+
+    <h3>O teste de 14 dias</h3>
+    <p>Campanhas em tráfego frio, mesma LP, mesma cadência, mesma call, mesmo público. Muda só a manchete e o hook. <strong>A</strong> "Apareça com segurança. O paciente fica." · <strong>B</strong> "Apareça com segurança. Cresça com credibilidade." · <strong>C</strong> "Todo mundo tem consultório. Quase ninguém tem uma comunidade." · <strong>D</strong> "Apareça sem deixar de ser quem você é." (se a verba só banca três células, D entra no lugar da B). A frase "Conteúdo com fonte. Comunidade com o seu nome." fica fora do teste: é mecanismo, e mecanismo só fala com quem já ouviu a promessa.</p>
+    <p>Métrica única: <strong>custo por reunião realizada</strong>, não CTR e não custo por lead, porque o gargalo é comparecimento. Antes de subir, definir a verba diária por célula e o <strong>mínimo de reuniões realizadas por célula</strong> para a leitura valer. Sem esse piso, em 14 dias a diferença entre as células é ruído e a pior sai por acaso. Esse número não está aqui de propósito: depende da verba que o Guga liberar. Com o piso batido, a pior sai, a melhor leva 60% da verba, e a manchete vencedora só então vai para o site e para o orgânico. É a ordem que Jurerê pediu: validar no pago, depois propagar [52:35].</p>
+    <p>Pergunta de leitura da semana 1, além do número: as três últimas respostas que o lead escreveu ao T2. Se forem "obrigada", a cadência está cara. Se forem "como você fez isso?" ou "posso trocar essa parte?", tem produto na mesa.</p>
+  </div>
+</section>
+
+<section id="decisoes">
+  <div class="wrap">
+    <div class="snum">09 · Decisões e fontes</div>
+    <h2>O que o Guga decide, e o que este documento não usa</h2>
+
+    <h3>Decisões</h3>
+    <ol>
+      <li><strong>A manchete.</strong> Aprovar a recomendada (A) como padrão e as outras como células do teste (se a verba só banca três, D no lugar da B), ou escolher uma só. E liberar a verba que define o mínimo de reuniões por célula.</li>
+      <li><strong>O nome do mecanismo.</strong> Conteúdo com Fonte, ou outro. Precisa caber no canto de um card.</li>
+      <li><strong>Preço e escopo do herói.</strong> Com a exigência de que o mecanismo esteja dentro.</li>
+      <li><strong>Quem revisa compliance, para qual conselho e até quando.</strong> O checklist é por conselho, e o ICP tem três (CFM, CFN, CREF). Escolher a especialidade que abre a leva e escrever só o checklist dela: uma campanha com um checklist sobe em dias, três checklists param a leva inteira. Decidir também se a revisão é humana (Dr. Arthur ou parceiro externo) ou automática, e a data em que o primeiro checklist fica pronto, porque é essa data, e não a da manchete, que libera a mídia.</li>
+      <li><strong>As 5 entregas cortáveis.</strong> A lista fechada, para o vendedor nunca improvisar corte.</li>
+      <li><strong>Psicólogo.</strong> Fora desta leva, ou dentro com modo individual e a frase da persona.</li>
+      <li><strong>O critério de entrada na plataforma.</strong> Se "só entra quem tem registro" for verdade, vira hook. Se não for, o hook morre e a Priscilla continua com razão.</li>
+      <li><strong>O nome Scale.</strong> Continua como nome do produto na demo e na tabela, ou some da copy de vez. Na copy de anúncio, o que aparece é o mecanismo.</li>
+      <li><strong>A lista real das bases que o Scale consulta.</strong> Antes de qualquer anúncio nomear revista.</li>
+    </ol>
+
+    <h3>O que falta medir antes de o plano fechar</h3>
+    <p>Seis números que este documento precisou e não encontrou em lugar nenhum. Cada um sustenta uma promessa que já está na copy acima.</p>
+    <ul>
+      <li><strong>Custo real de atendimento por cliente por mês.</strong> Sustenta o preço do herói: o suporte humano é o argumento e também o maior custo.</li>
+      <li><strong>Capacidade do time em clientes simultâneos.</strong> Sustenta a escassez honesta ("vagas de implementação por mês").</li>
+      <li><strong>Tempo real de onboarding nos últimos clientes.</strong> Sustenta o "no ar em 7 dias". O precedente é a promessa do Guga à Fernanda Catena em 30/01/2026 [47:26], que fechou no mesmo dia; falta o medido.</li>
+      <li><strong>Taxa de permanência das comunidades ativas.</strong> Sustenta "o paciente fica", que é a promessa da camada 2. A tese já assumiu esse furo em 31/08; continua aberto.</li>
+      <li><strong>Lista das bases que o Scale consulta.</strong> Sustenta qualquer menção a revista ou índice.</li>
+      <li><strong>Tempo real de aprovação por dia nos clientes atuais.</strong> Sustenta o "dez minutos por dia" do John.</li>
+    </ul>
+
+    <h3>O que este documento não usa, de propósito</h3>
+    <ul>
+      <li>Os números do Pipedrive citados no plano do John (faturamento por mês, negócios novos, contas inativas, motivos de perda). O Guga pediu para ignorar porque a leitura não está correta. A meta de R$ 750 mil e a matemática do funil dependem deles, então ficam fora até a base ser refeita.</li>
+      <li>Os três números do deck que seguem sem fonte: "40% mais chance em grupo", as barras de abandono e a conversão de 2 a 5% contra 15 a 25%.</li>
+      <li>Qualquer afirmação sobre o cliente que não venha de uma ficha datada, com o minuto da fala.</li>
+    </ul>
+
+    <div class="stats">
+      <div class="stat"><div class="n blue">587</div><div class="l">fichas consultadas hoje para a contagem da seção 02</div></div>
+      <div class="stat"><div class="n blue">13</div><div class="l">fichas que citam conselho: real, caro, minoritário</div></div>
+      <div class="stat"><div class="n blue">59</div><div class="l">fichas com "medo de": quase todas são medo de ninguém vir ou de não sustentar</div></div>
+      <div class="stat"><div class="n blue">0</div><div class="l">frases literais registradas nas fichas com "autoridade" ou "PubMed" na boca do lead</div></div>
+      <div class="stat"><div class="n blue">4</div><div class="l">manchetes candidatas para o teste de 14 dias, métrica única: custo por reunião realizada</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Fontes</strong></p>
+    <ul>
+      <li>Operação Credibilidade v1.0, em guga-marion.github.io/mydose-segundo-semestre/operacao-credibilidade.html, lida em 06/09/2026.</li>
+      <li>Três áudios do Guga de 06/09/2026 (17:21, 17:22 e 17:23), transcritos localmente. Arquivo: <code>transcricao-audios-guga-2026-09-06.txt</code>, nesta pasta.</li>
+      <li>Reunião de estratégia em Jurerê, 04/09/2026, 1h. Transcrição na pasta do projeto de cortes do video-editor.</li>
+      <li>Vídeo do Batista de 05/09/2026, 13 min.</li>
+      <li>A tese de comunidade (01/09), a proposta de valor e a cadência (05/09), e o deck de comunidade, todos nesta pasta ou no lp.</li>
+      <li>A base de 587 fichas de reuniões comerciais, na wiki.</li>
+    </ul>
+    <p>Citações do cliente são literais e datadas, com o minuto da fala. Timestamps entre colchetes sem nome são da reunião de Jurerê. Documento interno, sem indexação.</p>
+  </div>
+</footer>
+</body>
+</html>
