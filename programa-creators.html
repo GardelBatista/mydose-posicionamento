@@ -5,258 +5,318 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programa de Creators Dose</title>
 <meta name="robots" content="noindex, nofollow, noarchive">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#15161A;--ink-2:#3C3F49;--ink-3:#6E7280;--paper:#FBFAF8;--card:#fff;--line:#E2DFD8;--azul:#3A46E0;--mag:#D1307A;--coral:#FF6B4A;--soft:#EEF0FF}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F1F1F4;--ink-2:#C9CAD2;--ink-3:#9497A3;--paper:#111114;--card:#1A1A1F;--line:#2C2C33;--azul:#7C86FF;--soft:#1D2240}}
+@font-face{font-family:"Americana";src:url(assets/americanabt_regular.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Americana";src:url(assets/americanabt_italic.ttf) format("truetype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"GSans";src:url(assets/GoogleSans-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"GSans";src:url(assets/GoogleSans-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"GSans";src:url(assets/GoogleSans-Bold.ttf) format("truetype");font-weight:700;font-display:swap}
+:root{
+  --navy:#101227;--navy2:#191E47;--ind1:#1D265E;--ind2:#2D2F77;--creme:#F6F4F2;--lilas:#EFEBF8;
+  --azul:#415FF5;--mag:#C64FCA;--coral:#F56442;--verde:#63AC39;
+  --p-azul:#D6DDFF;--p-pes:#FFEAE5;--p-lil:#F1D7F2;--p-ver:#DCEDD2;
+  --grad:linear-gradient(100deg,#415FF5 0%,#C64FCA 52%,#F56442 100%);
+  --ink:#101227;--ink2:#4A4D63;--ink3:#7C7F93;
+}
 *{box-sizing:border-box}
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Inter",-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
-section{min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;padding:56px 16px;border-bottom:1px solid var(--line)}
-.in{max-width:1000px;width:100%;margin:0 auto}
-.k{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
-h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(44px,8vw,88px);line-height:1;letter-spacing:-.02em;margin:0 0 20px}
-h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.015em;margin:0 0 22px}
-h1 em,h2 em{font-style:italic;color:var(--azul)}
-h3{font-size:18px;margin:0 0 6px}
-p{color:var(--ink-2);max-width:720px;margin:0 0 14px}
-.big{font-size:clamp(19px,2.4vw,24px)}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-.c p{font-size:16px;margin:0}
-.c.a{border-top:4px solid var(--azul)}.c.m{border-top:4px solid var(--mag)}.c.o{border-top:4px solid var(--coral)}
-.num{font-family:"Instrument Serif",Georgia,serif;font-size:56px;line-height:1;color:var(--azul)}
-.tier{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.tier .c{padding:28px}
-.tier .pct{font-family:"Instrument Serif",Georgia,serif;font-size:96px;line-height:.9}
-.tier .m .pct{color:var(--mag)}
-.tier .a .pct{color:var(--azul)}
-ul{padding-left:20px;margin:8px 0 0}li{margin:6px 0;color:var(--ink-2);font-size:16px}
-table{width:100%;border-collapse:collapse;font-size:16px}
-th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
-td b{color:var(--ink)}
-.scroll{overflow-x:auto}
-.steps{counter-reset:s;display:grid;gap:10px}
-.steps div{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 56px;position:relative;font-size:16px;color:var(--ink-2)}
-.steps div::before{content:counter(s);position:absolute;left:16px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--azul);color:#fff;font:600 14px/28px Inter;text-align:center}
-.steps b{color:var(--ink)}
-.msg{white-space:pre-wrap;background:var(--soft);border-radius:14px;padding:20px;font-size:17px;color:var(--ink)}
-button{font:600 14px Inter,sans-serif;border:0;border-radius:8px;padding:9px 16px;background:var(--azul);color:#fff;cursor:pointer;margin-top:12px}
-.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--azul);margin-bottom:10px}
-.note{font-size:14px;color:var(--ink-3)}
-.nav{position:fixed;right:16px;bottom:16px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-3);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
-@media (max-width:600px){body{font-size:16px}.tier .pct{font-size:72px}.nav{display:none}}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:"GSans",-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+section{position:relative;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;padding:72px 16px 64px;overflow:hidden;background:var(--creme)}
+section::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad)}
+section.dark{background:var(--navy);color:#fff}
+section.ind{background:linear-gradient(160deg,var(--ind1),var(--ind2));color:#fff}
+.in{position:relative;z-index:1;max-width:1080px;width:100%;margin:0 auto}
+.wm{position:absolute;right:-120px;bottom:-120px;width:520px;height:520px;background:currentColor;opacity:.07;-webkit-mask:url(assets/mandala-outlined.svg) center/contain no-repeat;mask:url(assets/mandala-outlined.svg) center/contain no-repeat;pointer-events:none}
+section.dark .wm,section.ind .wm{opacity:.09}
+.k{font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.dark .k,.ind .k{color:rgba(255,255,255,.62)}
+.k::before{content:"";width:14px;height:14px;background:var(--grad);-webkit-mask:url(assets/star.svg) center/contain no-repeat;mask:url(assets/star.svg) center/contain no-repeat}
+h1,h2{font-family:"Americana",Georgia,serif;font-weight:400;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(48px,9vw,104px);line-height:.98;margin-bottom:26px}
+h2{font-size:clamp(34px,5.4vw,60px);line-height:1.04;margin-bottom:30px;max-width:900px}
+h1 em,h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+p{color:var(--ink2);max-width:700px;margin:0 0 14px}
+.dark p,.ind p{color:rgba(255,255,255,.74)}
+.lead{font-size:clamp(19px,2.3vw,24px);line-height:1.45}
+.small{font-size:15px;color:var(--ink3)}
+.dark .small,.ind .small{color:rgba(255,255,255,.55)}
+.logo{height:40px;margin-bottom:56px;display:block}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:#fff;border-radius:28px;padding:28px;box-shadow:0 1px 0 rgba(16,18,39,.04)}
+.card h3{font-family:"Americana",Georgia,serif;font-weight:400;font-size:26px;line-height:1.1;margin:0 0 8px}
+.card p{font-size:16px;margin:0}
+.dark .card,.ind .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.dark .card h3,.ind .card h3{color:#fff}
+.ic{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;margin-bottom:22px}
+.ic i{width:34px;height:34px;display:block;-webkit-mask-position:center;-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat;mask-position:center;mask-size:contain;mask-repeat:no-repeat}
+.az .ic{background:var(--p-azul)}.az .ic i{background:var(--azul)}
+.pe .ic{background:var(--p-pes)}.pe .ic i{background:var(--coral)}
+.li .ic{background:var(--p-lil)}.li .ic i{background:var(--mag)}
+.ve .ic{background:var(--p-ver)}.ve .ic i{background:var(--verde)}
+.g1{-webkit-mask-image:url(assets/pinwheel.svg);mask-image:url(assets/pinwheel.svg)}
+.g2{-webkit-mask-image:url(assets/circles.svg);mask-image:url(assets/circles.svg)}
+.g3{-webkit-mask-image:url(assets/diamond.svg);mask-image:url(assets/diamond.svg)}
+.g4{-webkit-mask-image:url(assets/concave.svg);mask-image:url(assets/concave.svg)}
+.big{font-family:"Americana",Georgia,serif;font-size:clamp(64px,9vw,112px);line-height:.9;margin-bottom:12px}
+.big.gr{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.three .card{padding:34px 28px}
+.three .card h3{font-family:"GSans";font-size:19px;font-weight:700;margin-bottom:6px}
+.tiers{display:grid;gap:16px;grid-template-columns:1fr auto 1fr;align-items:stretch}
+.tiers .arrow{display:grid;place-items:center;font-family:"Americana";font-size:44px;color:var(--mag)}
+.tiers .card{padding:36px 32px}
+.pct{font-family:"Americana",Georgia,serif;font-size:clamp(88px,12vw,140px);line-height:.85;margin:6px 0 14px}
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:99px}
+.az .pill{background:var(--p-azul);color:var(--azul)}.li .pill{background:var(--p-lil);color:var(--mag)}.pe .pill{background:var(--p-pes);color:var(--coral)}
+.az .pct{color:var(--azul)}.li .pct{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+ul.clean{list-style:none;padding:0;margin:14px 0 0}
+ul.clean li{padding:9px 0 9px 28px;position:relative;font-size:16px;color:var(--ink2);border-top:1px solid rgba(16,18,39,.07)}
+ul.clean li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:12px;background:var(--grad);-webkit-mask:url(assets/star.svg) center/contain no-repeat;mask:url(assets/star.svg) center/contain no-repeat}
+.dark ul.clean li,.ind ul.clean li{color:rgba(255,255,255,.78);border-top-color:rgba(255,255,255,.1)}
+.money{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.money .card{display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.money .v{font-family:"Americana",Georgia,serif;font-size:46px;line-height:1;margin-top:18px}
+.money .feat{background:var(--navy);color:#fff}
+.money .feat p{color:rgba(255,255,255,.7)}
+.money .feat .v{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{background:#fff;border-radius:99px;padding:14px 22px;font-size:17px;font-weight:500;display:flex;align-items:center;gap:10px}
+.chip b{width:10px;height:10px;border-radius:50%;background:var(--grad)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:30px}
+.flow div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px 22px;min-width:140px}
+.flow div strong{display:block;font-family:"Americana";font-weight:400;font-size:40px;line-height:1;color:#fff}
+.flow div span{font-size:14px;color:rgba(255,255,255,.62)}
+.flow .to{border:0;background:none;min-width:0;padding:0;color:var(--mag);font-size:24px}
+.flow .last{background:var(--grad);border:0}
+.flow .last span{color:#fff}
+.dm{background:#fff;border-radius:28px;padding:30px;max-width:720px;position:relative}
+.dm .bubble{background:var(--lilas);border-radius:22px 22px 22px 6px;padding:22px 24px;white-space:pre-wrap;font-size:17px;line-height:1.6;color:var(--ink)}
+.dm .who{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-weight:700;font-size:15px}
+.dm .who img{width:38px;height:38px;border-radius:50%;background:var(--navy);padding:7px}
+button{font:700 15px "GSans",sans-serif;border:0;border-radius:99px;padding:13px 24px;background:var(--grad);color:#fff;cursor:pointer;margin-top:18px}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));counter-reset:s}
+.steps .card{counter-increment:s;padding:24px}
+.steps .card::before{content:counter(s,decimal-leading-zero);display:block;font-family:"Americana";font-size:34px;line-height:1;margin-bottom:14px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.steps .card h3{font-family:"GSans";font-weight:700;font-size:17px;margin-bottom:4px}
+.steps .card p{font-size:15px}
+.tag{font-family:"Americana",Georgia,serif;font-style:italic;font-size:clamp(30px,4vw,44px);margin-top:48px;color:#fff}
+.tag span{color:var(--coral)}
+.nav{position:fixed;right:16px;bottom:16px;z-index:5;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-radius:99px;padding:8px 14px}
+@media (max-width:760px){
+  html{scroll-snap-type:none}
+  body{font-size:16px}
+  section{padding:56px 16px 48px}
+  .tiers{grid-template-columns:1fr}.tiers .arrow{transform:rotate(90deg);font-size:34px}
+  .wm{width:340px;height:340px;right:-110px;bottom:-110px}
+  .nav{display:none}.logo{height:32px;margin-bottom:40px}
+  .card{border-radius:24px;padding:24px}
+}
 </style>
 </head>
 <body>
 
-<section><div class="in">
-<div class="k">MyDose · Dose · Novembro 2026</div>
-<h1>Programa de <em>Creators</em> Dose</h1>
-<p class="big">Um convite fechado para profissionais de saúde que já criam conteúdo mostrarem o Dose fazendo o conteúdo deles, e ganharem por isso.</p>
-<p class="note">Etapa 1 · inspirada no programa do Higgsfield · só para quem a gente convidar</p>
+<!-- 1 capa -->
+<section class="dark"><div class="wm"></div><div class="in">
+<img class="logo" src="assets/logo-mydose-gradient-branco.svg" alt="MyDose">
+<div class="k">Novembro 2026 · convite fechado</div>
+<h1>Programa de<br><em>Creators</em> Dose</h1>
+<p class="lead">Profissionais de saúde que já criam conteúdo mostram o Dose fazendo o conteúdo deles. E ganham por isso.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">01 · A ideia</div>
-<h2>O melhor anúncio do Dose é <em>um profissional usando o Dose</em></h2>
+<!-- 2 a ideia -->
+<section><div class="wm"></div><div class="in">
+<div class="k">A ideia</div>
+<h2>O melhor anúncio do Dose é um profissional <em>usando</em> o Dose.</h2>
 <div class="grid">
-<div class="c a"><h3>O que a gente sabe</h3><p>Nas 587 calls fichadas, o momento que mais acende o lead é a IA funcionando na frente dele. Um creator mostrando o Dose montando o post leva esse momento para o feed.</p></div>
-<div class="c m"><h3>Quem compra</h3><p>Quem compra o Dose é o profissional, então o creator certo é quem tem colega na audiência. Quem só tem paciente traz view, mas não traz venda.</p></div>
-<div class="c o"><h3>Como a gente paga</h3><p>Com produto (créditos), com venda (comissão pelo cupom) e com alcance (bônus por visualização), que é o mesmo tripé do Higgsfield.</p></div>
+<div class="card az"><div class="ic"><i class="g1"></i></div><h3>O que mais encanta</h3><p>Nas nossas calls, o momento que mais acende o lead é ver a IA montando o conteúdo na frente dele. O creator leva esse momento para o feed.</p></div>
+<div class="card li"><div class="ic"><i class="g2"></i></div><h3>Quem compra</h3><p>Quem compra o Dose é o profissional. Por isso o creator certo é quem tem outros profissionais na audiência.</p></div>
+<div class="card pe"><div class="ic"><i class="g3"></i></div><h3>Como pagamos</h3><p>Com produto, com venda e com alcance. É o mesmo tripé que o Higgsfield usa no programa de creators dele.</p></div>
 </div>
 </div></section>
 
-<section><div class="in">
-<div class="k">02 · Referência</div>
-<h2>Como o <em>Higgsfield</em> faz</h2>
-<div class="scroll"><table>
-<tr><th>Programa</th><th>O que o creator ganha</th><th>O que a gente copia na etapa 1</th></tr>
-<tr><td><b>Affiliate</b></td><td>Até 25% das assinaturas por 12 meses, em dinheiro. A taxa sobe com o volume.</td><td>Comissão em dois níveis que sobe com as vendas</td></tr>
-<tr><td><b>Creator Partnership</b></td><td>Créditos e acesso antecipado, por convite</td><td>Créditos de boas-vindas que renovam todo mês</td></tr>
-<tr><td><b>Earn</b></td><td>Pagamento por marco de visualização, com teto por vídeo e contagem uma semana depois</td><td>Bônus por mil views, com teto e orçamento fechado</td></tr>
-</table></div>
-<p class="note" style="margin-top:14px">Também olhamos Runway (plano grátis para parceiros), Whop (de US$ 0,80 a 2,00 por mil views) e iClinic (R$ 100 por indicação no mercado de saúde).</p>
-</div></section>
-
-<section><div class="in">
-<div class="k">03 · O programa em uma tela</div>
-<h2>O que o creator <em>ganha</em></h2>
+<!-- 3 referencia -->
+<section><div class="wm"></div><div class="in">
+<div class="k">A referência</div>
+<h2>O que aprendemos com o <em>Higgsfield</em></h2>
 <div class="grid">
-<div class="c a"><div class="num">1.000</div><h3>créditos no Dose</h3><p>300 na entrada e 700 quando o primeiro post sair. Depois, 300 créditos novos por mês enquanto ele publicar.</p></div>
-<div class="c m"><div class="num">10%</div><h3>de tudo que vender</h3><p>Pelo cupom próprio, sobre o que o cliente pagar nos primeiros 12 meses. Sobe para 15% na 11ª venda.</p></div>
-<div class="c o"><div class="num">R$ 5</div><h3>a cada mil views</h3><p>Bônus por visualização nos posts aprovados, com teto de R$ 500 por vídeo.</p></div>
+<div class="card az"><div class="ic"><i class="g4"></i></div><h3>Comissão que sobe</h3><p>O afiliado ganha uma parte das assinaturas que trouxer, e a taxa aumenta conforme ele vende mais.</p></div>
+<div class="card li"><div class="ic"><i class="g1"></i></div><h3>Créditos de presente</h3><p>Os creators convidados recebem créditos para usar a plataforma e mostrar o que ela faz.</p></div>
+<div class="card pe"><div class="ic"><i class="g2"></i></div><h3>Dinheiro por alcance</h3><p>Os vídeos ganham por visualização, com um limite por vídeo e um orçamento fechado.</p></div>
 </div>
-<p class="note" style="margin-top:16px">Quem compra com o cupom ganha 10% de desconto. É o motivo para o seguidor usar o cupom e não comprar direto.</p>
+<p class="small" style="margin-top:22px">Também olhamos Runway, Whop e iClinic. O desenho do Dose junta os três jeitos de pagar num convite só.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">04 · Os dois níveis</div>
-<h2>Só duas regras: <em>10% e depois 15%</em></h2>
-<div class="tier">
-<div class="c a"><span class="tag">Nível 1 · ao entrar</span><div class="pct">10%</div><h3>Creator Dose</h3><ul><li>Cupom próprio com 10% de comissão</li><li>1.000 créditos de boas-vindas</li><li>300 créditos por mês publicando 2 posts</li><li>R$ 5 por mil views</li></ul></div>
-<div class="c m"><span class="tag">Nível 2 · com 10 vendas</span><div class="pct">15%</div><h3>Creator Pro</h3><ul><li>15% em toda venda a partir da 11ª</li><li>Tudo do nível 1</li><li>Destaque no @mydoseapp</li><li>Acesso antecipado a funcionalidades novas</li></ul></div>
+<!-- 4 o que ganha -->
+<section class="ind"><div class="wm"></div><div class="in">
+<div class="k">O que o creator ganha</div>
+<h2>Três motivos para <em>dizer sim</em></h2>
+<div class="grid three">
+<div class="card"><div class="big gr">1.000</div><h3>créditos no Dose</h3><p>Na entrada, para criar carrossel, story, vídeo e roteiro do consultório.</p></div>
+<div class="card"><div class="big gr">10%</div><h3>de tudo que vender</h3><p>Com um cupom próprio. Sobe para 15% quando ele chega a 10 vendas.</p></div>
+<div class="card"><div class="big gr">R$ 5</div><h3>a cada mil views</h3><p>Nos posts sobre o Dose, até R$ 500 por vídeo.</p></div>
 </div>
-<p class="note" style="margin-top:16px">Subir é automático e não volta: quem chega em 10 vendas fica no 15% para sempre.</p>
+<p class="small" style="margin-top:24px">Quem compra com o cupom ganha 10% de desconto, e é por isso que o seguidor usa o cupom.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">05 · Na prática</div>
-<h2>Quanto um creator <em>ganha</em></h2>
-<div class="scroll"><table>
-<tr><th>Situação</th><th>Conta</th><th>Recebe</th></tr>
-<tr><td>1 venda do plano anual no nível 1</td><td>10% de R$ 1.164</td><td><b>R$ 116,40</b></td></tr>
-<tr><td>1 venda do plano anual no nível 2</td><td>15% de R$ 1.164</td><td><b>R$ 174,60</b></td></tr>
-<tr><td>4 posts no mês com 20 mil views cada</td><td>80 mil views × R$ 5 por mil</td><td><b>R$ 400</b></td></tr>
-<tr><td>Um mês bom no nível 1</td><td>4 posts e 3 vendas anuais</td><td><b>R$ 749,20</b> + 300 créditos</td></tr>
-<tr><td>Um mês bom no nível 2</td><td>4 posts e 3 vendas anuais</td><td><b>R$ 923,80</b> + 300 créditos</td></tr>
-</table></div>
-<p class="note" style="margin-top:14px">Conta feita no plano anual de R$ 1.164 (R$ 97 por mês), sem o desconto de 10% do cupom. A comissão é calculada sobre o valor que o cliente efetivamente pagar.</p>
+<!-- 5 niveis -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Os dois níveis</div>
+<h2>Começa em 10%. Com 10 vendas, <em>vai para 15%</em>.</h2>
+<div class="tiers">
+<div class="card az"><span class="pill">Ao entrar</span><div class="pct">10%</div><h3>Creator Dose</h3>
+<ul class="clean"><li>Cupom próprio</li><li>1.000 créditos no Dose</li><li>R$ 5 a cada mil views</li></ul></div>
+<div class="arrow">→</div>
+<div class="card li"><span class="pill">Com 10 vendas</span><div class="pct">15%</div><h3>Creator Pro</h3>
+<ul class="clean"><li>15% em toda venda a partir da 11ª</li><li>Destaque no @mydoseapp</li><li>Acesso antes de todo mundo às novidades</li></ul></div>
+</div>
+<p class="small" style="margin-top:20px">Subir é automático e não tem volta.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">06 · Gamificação</div>
-<h2>Um placar que <em>todo mundo vê</em></h2>
+<!-- 6 quanto ganha -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Na prática</div>
+<h2>Quanto um creator <em>ganha</em> num mês bom</h2>
+<div class="money">
+<div class="card az"><p>Uma venda do plano anual, no nível 1</p><div class="v">R$ 116</div></div>
+<div class="card li"><p>Uma venda do plano anual, no nível 2</p><div class="v">R$ 175</div></div>
+<div class="card pe"><p>Quatro posts com 20 mil views cada</p><div class="v">R$ 400</div></div>
+<div class="card feat"><p>Quatro posts e três vendas no mês, no nível 2</p><div class="v">R$ 924</div></div>
+</div>
+<p class="small" style="margin-top:20px">Conta feita no plano anual de R$ 1.164 (R$ 97 por mês).</p>
+</div></section>
+
+<!-- 7 gamificacao -->
+<section class="dark"><div class="wm"></div><div class="in">
+<div class="k">Gamificação</div>
+<h2>Um placar que a turma inteira <em>acompanha</em></h2>
 <div class="grid">
-<div class="c a"><h3>Placar do mês</h3><p>Três números por creator: posts, views verificadas e vendas pelo cupom. A turma inteira vê o placar.</p></div>
-<div class="c m"><h3>Top 3 do mês</h3><p>Os três primeiros ganham 500 créditos de bônus e aparecem no @mydoseapp.</p></div>
-<div class="c o"><h3>Barra até o 15%</h3><p>Cada creator vê quantas vendas faltam para o nível 2. A meta de 10 vendas tem que estar sempre na cara dele.</p></div>
+<div class="card"><div class="ic" style="background:rgba(65,95,245,.18)"><i class="g4" style="background:#8EA0FF"></i></div><h3>Placar do mês</h3><p>Posts, views e vendas de cada creator, visíveis para toda a turma.</p></div>
+<div class="card"><div class="ic" style="background:rgba(198,79,202,.18)"><i class="g1" style="background:#E08AE3"></i></div><h3>Top 3 do mês</h3><p>Os três primeiros ganham créditos de bônus e aparecem no @mydoseapp.</p></div>
+<div class="card"><div class="ic" style="background:rgba(245,100,66,.18)"><i class="g3" style="background:#FF9A82"></i></div><h3>Rumo aos 15%</h3><p>Cada creator vê quantas vendas faltam para subir de nível.</p></div>
 </div>
 </div></section>
 
-<section><div class="in">
-<div class="k">07 · As regras do jogo</div>
+<!-- 8 regras -->
+<section><div class="wm"></div><div class="in">
+<div class="k">As regras do jogo</div>
 <h2>O que vale e o que <em>não vale</em></h2>
 <div class="grid">
-<div class="c a"><h3>Todo post</h3><ul><li>Leva #publi e a marcação de parceria paga. Desde o guia do CONAR de 2026, cupom e afiliado contam como publicidade.</li><li>Mostra o Dose funcionando, de preferência a IA montando o conteúdo</li><li>O formato preferido é o bastidor: "como eu faço o meu conteúdo"</li></ul></div>
-<div class="c o"><h3>Nunca</h3><ul><li>"Validado pelo PubMed" ou "aprovado pelo conselho"</li><li>Promessa de resultado ou de faturamento</li><li>"A IA posta sozinha". A frase certa é: a IA escreve, você aprova.</li></ul></div>
-<div class="c m"><h3>Views</h3><ul><li>Contadas 7 dias depois do post, por print do Insights</li><li>Impulsionamento pago e views compradas não contam</li><li>Pagamento mensal, até o orçamento do mês acabar</li></ul></div>
+<div class="card ve"><div class="ic"><i class="g2"></i></div><h3>Sempre</h3><ul class="clean"><li>#publi e a marcação de parceria paga</li><li>Mostrar o Dose funcionando</li><li>De preferência no bastidor: "como eu faço meu conteúdo"</li></ul></div>
+<div class="card pe"><div class="ic"><i class="g4"></i></div><h3>Nunca</h3><ul class="clean"><li>"Aprovado pelo conselho"</li><li>Promessa de resultado ou de faturamento</li><li>"A IA posta sozinha". A IA escreve, você aprova.</li></ul></div>
+<div class="card az"><div class="ic"><i class="g1"></i></div><h3>Views</h3><ul class="clean"><li>Contam 7 dias depois do post</li><li>Post impulsionado não conta</li><li>Pagamento uma vez por mês</li></ul></div>
 </div>
 </div></section>
 
-<section><div class="in">
-<div class="k">08 · Quem convidar</div>
-<h2>A primeira turma: <em>15 vagas</em></h2>
-<div class="scroll"><table>
-<tr><th>Perfil</th><th>Por que</th></tr>
-<tr><td><b>Clientes do Dose que já postam</b></td><td>É prova real. O conteúdo já existe e não precisa de convencimento.</td></tr>
-<tr><td><b>Mentores e professores de profissionais de saúde</b></td><td>A audiência deles é exatamente quem compra.</td></tr>
-<tr><td><b>Nutris, médicos e educadores físicos que ensinam colegas</b></td><td>Têm alcance e colega na audiência.</td></tr>
-<tr><td><b>Fora da primeira turma</b></td><td>Psicólogos e psiquiatras, e perfis só de paciente sem conteúdo de bastidor</td></tr>
-</table></div>
-</div></section>
-
-<section><div class="in">
-<div class="k">09 · Onde achar os perfis</div>
-<h2>Instagram e TikTok: <em>quatro fontes</em></h2>
+<!-- 9 onde achar -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Onde achar os creators</div>
+<h2>Só gente <em>nova</em>, no Instagram e no TikTok</h2>
 <div class="grid">
-<div class="c a"><span class="tag">Fonte 1 · quente</span><h3>Nossa base</h3><p>Clientes do Dose e do Habits que já postam. É a lista do CRM cruzada com o @ de cada um. Converte mais e custa menos.</p></div>
-<div class="c a"><span class="tag">Fonte 2 · morna</span><h3>Quem interage com o @mydoseapp</h3><p>Quem curtiu, comentou ou salvou nas últimas semanas. A fila da prospecção já colhe essa lista, então é só marcar quem tem perfil de creator.</p></div>
-<div class="c m"><span class="tag">Fonte 3 · busca</span><h3>Palavra-chave e hashtag</h3><p>No Instagram e no TikTok: "mentoria para nutricionistas", "marketing para médicos", "rotina de consultório", "nutri empreendedora", #nutricionista, #medicinaintegrativa, #personaltrainer.</p></div>
-<div class="c o"><span class="tag">Fonte 4 · vizinhança</span><h3>Quem segue os mentores</h3><p>Os perfis que seguem e comentam nos grandes mentores de profissionais de saúde. Quem já consome conteúdo de crescimento é quem fala com colega.</p></div>
+<div class="card az"><div class="ic"><i class="g1"></i></div><h3>Palavra-chave e hashtag</h3><p>Buscas como "mentoria para nutricionistas", "marketing para médicos", "rotina de consultório", #nutricionista e #personaltrainer.</p></div>
+<div class="card li"><div class="ic"><i class="g2"></i></div><h3>Quem segue os mentores</h3><p>Profissionais que acompanham e comentam nos grandes mentores da área. É um cenário para testar na primeira turma.</p></div>
 </div>
-<p class="note" style="margin-top:16px">A lista bruta é montada com um raspador público (Apify, perfis do Instagram e do TikTok). Ele traz bio, seguidores, média de views e o e-mail da bio, quando tem. A raspagem só lê: nada é enviado por automação.</p>
+<p class="small" style="margin-top:22px">A nossa base e quem interage com o @mydoseapp ficam com o time de vendas e não entram neste programa.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">10 · Como filtrar</div>
-<h2>O porte certo: <em>micro, ativo, com colega na audiência</em></h2>
-<div class="scroll"><table>
-<tr><th>Critério</th><th>Corte</th><th>Peso</th></tr>
-<tr><td><b>Registro no conselho visível</b></td><td>CRN, CRM ou CREF na bio. Sem registro, fica fora.</td><td>Obrigatório</td></tr>
-<tr><td><b>Tamanho</b></td><td>De 5 mil a 80 mil seguidores no Instagram ou no TikTok. Acima disso cobra cachê e não aceita só comissão.</td><td>20</td></tr>
-<tr><td><b>Engajamento</b></td><td>Instagram: curtidas e comentários médios acima de 2% dos seguidores. TikTok: média de views acima de 3 mil nos últimos 10 vídeos.</td><td>25</td></tr>
-<tr><td><b>Frequência</b></td><td>Pelo menos 2 posts por semana nos últimos 30 dias</td><td>15</td></tr>
-<tr><td><b>Fala com colega</b></td><td>A bio ou os posts falam com profissionais ("mentora", "para nutris", "curso", bastidor de consultório)</td><td>30</td></tr>
-<tr><td><b>Já usa IA ou mostra processo</b></td><td>Tem post sobre ferramenta, rotina ou "como eu faço"</td><td>10</td></tr>
-</table></div>
-<p class="note" style="margin-top:14px">Nota de 0 a 100. <b>A</b> (70 ou mais) recebe o convite primeiro, <b>B</b> (50 a 69) entra se faltar vaga e <b>C</b> não é chamado. A conta de engajamento barra quem comprou seguidor.</p>
+<!-- 10 quem entra -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Quem entra</div>
+<h2>O perfil certo para a <em>primeira turma</em></h2>
+<div class="chips">
+<div class="chip"><b></b>Registro no conselho na bio</div>
+<div class="chip"><b></b>De 5 mil a 80 mil seguidores</div>
+<div class="chip"><b></b>Posta toda semana</div>
+<div class="chip"><b></b>Engajamento de verdade</div>
+<div class="chip"><b></b>Fala com outros profissionais</div>
+<div class="chip"><b></b>Mostra o próprio processo</div>
+</div>
+<p class="lead" style="margin-top:34px">Nutricionistas, médicos e educadores físicos. Psicólogos ficam para uma segunda turma.</p>
+<p class="small">Acima de 80 mil seguidores o creator costuma cobrar cachê e não topa ganhar só por comissão.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">11 · Como disparar</div>
-<h2>Manual, no ritmo que <em>protege a conta</em></h2>
+<!-- 11 como chamar -->
+<section class="ind"><div class="wm"></div><div class="in">
+<div class="k">Como chamar</div>
+<h2>Um a um, no ritmo que <em>protege a conta</em></h2>
 <div class="grid">
-<div class="c a"><h3>Instagram</h3><ul><li>DM pela conta @mydoseapp, uma por uma, citando um post real</li><li>1 DM a cada 3 a 5 minutos, no máximo 10 por bloco e 2 a 3 blocos por dia</li><li>Se aparecer o erro "Tente novamente", o bloco acaba ali</li><li>Usar a mesma fila da prospecção, marcada como creator, para ninguém ser chamado duas vezes</li></ul></div>
-<div class="c m"><h3>TikTok</h3><ul><li>A DM do TikTok costuma estar fechada para quem não segue de volta</li><li>Caminho 1: o e-mail da bio, com o mesmo texto</li><li>Caminho 2: achar o Instagram da mesma pessoa e chamar por lá</li><li>Caminho 3: comentar num vídeo recente e seguir antes da DM</li></ul></div>
-<div class="c o"><h3>Cadência</h3><ul><li><b>Dia 0:</b> o convite</li><li><b>Dia 2:</b> comentário num post novo dela, sem cobrar resposta</li><li><b>Dia 5:</b> último toque curto: "a turma fecha sexta"</li><li>Sem resposta, ela volta para a fila e não é chamada de novo neste ciclo</li></ul></div>
+<div class="card"><h3>Instagram</h3><p>DM pela conta do MyDose, citando um post real da pessoa. No máximo 10 por bloco, com alguns minutos entre uma e outra.</p></div>
+<div class="card"><h3>TikTok</h3><p>Pelo e-mail da bio ou pelo Instagram da mesma pessoa, porque a DM do TikTok costuma estar fechada.</p></div>
+<div class="card"><h3>Três toques</h3><p>Dia 0 o convite, dia 2 um comentário num post novo e dia 5 um lembrete curto. Sem resposta, encerra ali.</p></div>
 </div>
-<div class="scroll" style="margin-top:18px"><table>
-<tr><th>Funil para fechar 15 vagas</th><th>Estimativa</th></tr>
-<tr><td>Lista bruta das quatro fontes</td><td>300 perfis</td></tr>
-<tr><td>Depois do filtro (A e B)</td><td>cerca de 80</td></tr>
-<tr><td>Convites enviados (cerca de 25 por dia)</td><td>80 em 4 dias úteis</td></tr>
-<tr><td>Respostas</td><td>20 a 25, se a taxa ficar entre 25 e 30%</td></tr>
-<tr><td>Aceites</td><td>15</td></tr>
-</table></div>
-<p class="note" style="margin-top:10px">As taxas de resposta e de aceite são hipóteses e precisam ser medidas no primeiro bloco. Na prospecção fria a medida foi de cerca de 5 minutos por contato.</p>
+<div class="flow">
+<div><strong>300</strong><span>perfis encontrados</span></div><div class="to">→</div>
+<div><strong>80</strong><span>no perfil certo</span></div><div class="to">→</div>
+<div><strong>25</strong><span>calls marcadas</span></div><div class="to">→</div>
+<div class="last"><strong>15</strong><span>creators na turma</span></div>
+</div>
+<p class="small" style="margin-top:14px">Estimativa a confirmar no primeiro bloco de convites.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">12 · O convite</div>
-<h2>A mensagem da <em>DM</em></h2>
-<div class="msg" id="dm">Oi Carol, aqui é o [nome], do MyDose. Vi teu post sobre [detalhe real do post] e [elogio concreto].
+<!-- 12 convite -->
+<section><div class="wm"></div><div class="in">
+<div class="k">O convite</div>
+<h2>A mensagem termina numa <em>call</em></h2>
+<div class="dm">
+<div class="who"><img src="assets/icone-simbolo.svg" alt="">@mydoseapp</div>
+<div class="bubble" id="dm">Oi Carol, aqui é o [nome], do MyDose. Vi teu post sobre [detalhe real do post] e [elogio concreto].
 
 A gente está abrindo um programa de creators da saúde, só por convite, com 15 vagas nessa primeira turma. Quem entra ganha 1.000 créditos no Dose (a IA que monta carrossel, story, vídeo e roteiro do consultório), um cupom próprio que te paga 10% de tudo que vender, subindo pra 15%, e um bônus por visualização nos posts.
 
 Queria te apresentar com calma numa call rápida de 15 minutos. Fica melhor pra ti amanhã às [horário] ou quinta às [horário]?</div>
 <button onclick="navigator.clipboard.writeText(document.getElementById('dm').innerText);this.textContent='Copiado'">Copiar mensagem</button>
-<p class="note" style="margin-top:12px">A mensagem não explica o programa por escrito: o fechamento acontece na call, com o Dose aberto. Os horários saem da agenda real. Ritmo da prospecção: 1 DM a cada 3 a 5 minutos e no máximo 10 por bloco. O post citado tem que ser lido de verdade.</p>
+</div>
 </div></section>
 
-<section><div class="in">
-<div class="k">13 · Como roda na etapa 1</div>
-<h2>Da DM ao <em>primeiro pagamento</em></h2>
+<!-- 13 jornada -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Do convite ao pagamento</div>
+<h2>Como funciona <em>na prática</em></h2>
 <div class="steps">
-<div><b>Convite por DM.</b> Termina com dois horários de call para ele escolher.</div>
-<div><b>Call de 15 minutos.</b> A gente mostra o Dose montando um post com o tema dele, explica os dois níveis e fecha a adesão na própria call.</div>
-<div><b>Aceite.</b> Ele recebe o termo de adesão de 1 página, o cupom próprio (ex.: CAROL10) e os 300 créditos.</div>
-<div><b>Primeiro post.</b> O time aprova em até 48 horas e libera os 700 créditos restantes.</div>
-<div><b>Dia 7 do post.</b> O creator manda o print do Insights e as views entram no placar.</div>
-<div><b>Fechamento do mês.</b> A planilha cruza as vendas do cupom no checkout com o creator e soma a comissão e o bônus de views.</div>
-<div><b>Pagamento.</b> Até o dia 10 do mês seguinte, com o placar publicado para a turma.</div>
+<div class="card"><h3>Convite</h3><p>A DM chama para uma call de 15 minutos.</p></div>
+<div class="card"><h3>Call</h3><p>Mostramos o Dose criando um post no tema dele e fechamos a entrada.</p></div>
+<div class="card"><h3>Boas-vindas</h3><p>Ele recebe o cupom próprio e os 1.000 créditos.</p></div>
+<div class="card"><h3>Posts</h3><p>O time aprova cada post em até 48 horas.</p></div>
+<div class="card"><h3>Fechamento</h3><p>No fim do mês, somamos vendas e views e publicamos o placar.</p></div>
+<div class="card"><h3>Pagamento</h3><p>Até o dia 10 do mês seguinte.</p></div>
 </div>
 </div></section>
 
-<section><div class="in">
-<div class="k">14 · O piloto</div>
-<h2>30 dias, uma <em>métrica só</em></h2>
-<div class="grid">
-<div class="c a"><div class="num">15</div><h3>creators</h3><p>Convidados por DM, entrando todos no nível 1.</p></div>
-<div class="c m"><div class="num">R$ 5 mil</div><h3>teto de views no mês</h3><p>Cerca de 1 milhão de views verificadas. Acabou o orçamento, acabou o bônus do mês.</p></div>
-<div class="c o"><div class="num">CAC</div><h3>custo por cliente pagante</h3><p>Views, comissões e custo real dos créditos, divididos pelos pagantes do cupom, contra o CAC da Meta no mesmo mês.</p></div>
+<!-- 14 piloto -->
+<section class="dark"><div class="wm"></div><div class="in">
+<div class="k">O piloto</div>
+<h2>30 dias para <em>provar</em></h2>
+<div class="grid three">
+<div class="card"><div class="big gr">15</div><h3>creators</h3><p>Todos começando no nível 1.</p></div>
+<div class="card"><div class="big gr">R$ 5 mil</div><h3>de teto para views</h3><p>Quando o orçamento do mês acaba, o bônus de views do mês também acaba.</p></div>
+<div class="card"><div class="big gr">1</div><h3>número para decidir</h3><p>Quanto custou cada cliente que pagou, comparado com o que pagamos na Meta.</p></div>
 </div>
-<p class="note" style="margin-top:16px">Regra de corte no dia 30: quem tem view e não tem venda sai do bônus de views e fica só com o cupom.</p>
+<p class="small" style="margin-top:22px">No dia 30, quem trouxe view e nenhuma venda fica só com o cupom, e quem vendeu continua com tudo.</p>
 </div></section>
 
-<section><div class="in">
-<div class="k">15 · Backlog</div>
-<h2>Depois do piloto: <em>rastrear sozinho</em></h2>
-<p>Na etapa 1 o cruzamento é manual, na planilha. Para escalar, a venda com cupom tem que se ligar sozinha ao creator e à pessoa que comprou.</p>
-<div class="steps">
-<div><b>Levantamento de plataforma.</b> Comparar ferramentas de afiliado que conversam com o checkout (o Higgsfield usa o FirstPromoter, dá para ver pelo <code>?fpr=</code> nos links dele; Rewardful e Tolt são as alternativas comuns) contra construir dentro de casa.</div>
-<div><b>Ligar cupom, pessoa e creator.</b> Toda compra com cupom grava quem comprou, qual cupom usou e de qual creator ele é, junto com a UTM do link.</div>
-<div><b>Trazer para o CRM próprio.</b> O creator vira um registro no CRM com as vendas dele, as views, o nível e o que já foi pago.</div>
-<div><b>Painel do creator.</b> Ele vê sozinho as vendas, o placar e quanto falta para o 15%, sem print e sem planilha.</div>
+<!-- 15 depois -->
+<section><div class="wm"></div><div class="in">
+<div class="k">Depois do piloto</div>
+<h2>Rastrear tudo <em>sozinho</em></h2>
+<p class="lead">No começo, as vendas com cupom são conferidas à mão. Para crescer, isso precisa acontecer sozinho.</p>
+<div class="grid" style="margin-top:26px">
+<div class="card az"><div class="ic"><i class="g4"></i></div><h3>Escolher a ferramenta</h3><p>Uma plataforma de afiliados que converse com o nosso checkout, como a que o Higgsfield usa, ou uma solução feita em casa.</p></div>
+<div class="card li"><div class="ic"><i class="g2"></i></div><h3>Ligar venda e creator</h3><p>Cada compra com cupom fica associada a quem comprou e a qual creator indicou.</p></div>
+<div class="card pe"><div class="ic"><i class="g1"></i></div><h3>Trazer para o nosso CRM</h3><p>Cada creator com as vendas, as views, o nível e um painel para ele acompanhar.</p></div>
 </div>
 </div></section>
 
-<section><div class="in">
-<div class="k">16 · Para fechar antes de abrir</div>
-<h2>O que ainda precisa de <em>decisão</em></h2>
-<div class="scroll"><table>
-<tr><th>Decisão</th><th>Proposta</th></tr>
-<tr><td><b>Gatilho do 15%</b></td><td>10 vendas. Com 100, quase ninguém sobe no piloto e o nível 2 vira enfeite.</td></tr>
-<tr><td><b>Base da comissão</b></td><td>O que o cliente pagar nos primeiros 12 meses</td></tr>
-<tr><td><b>Desconto do comprador</b></td><td>10% com o cupom</td></tr>
-<tr><td><b>Bônus de views</b></td><td>R$ 5 por mil, teto de R$ 500 por vídeo e R$ 5 mil por mês no programa</td></tr>
-<tr><td><b>Custo real dos créditos</b></td><td>Levantar o custo de IA de 1.000 créditos</td></tr>
-<tr><td><b>Conselhos</b></td><td>Checklist com o Dr. Arthur antes do primeiro post</td></tr>
-<tr><td><b>Pagamento de pessoa física</b></td><td>RPA ou nota do creator, a definir com o financeiro</td></tr>
-<tr><td><b>Quem aprova os posts</b></td><td>Uma pessoa do time, em até 48 horas</td></tr>
-</table></div>
-<p class="note" style="margin-top:20px">Gardel Batista · Diretor de Growth · MyDose · 13/11/2026</p>
+<!-- 16 fechamento -->
+<section class="ind"><div class="wm"></div><div class="in">
+<div class="k">Para começar</div>
+<h2>O desenho está <em>aprovado</em>. Falta isto:</h2>
+<ul class="clean" style="max-width:720px">
+<li>Validar as regras de publicidade com o Dr. Arthur, conselho por conselho</li>
+<li>Calcular o custo real dos 1.000 créditos</li>
+<li>Definir com o financeiro como pagar pessoa física</li>
+<li>Escolher quem do time aprova os posts</li>
+<li>Montar a lista dos 300 primeiros perfis</li>
+</ul>
+<div class="tag">Take back control<span>.</span></div>
+<p class="small" style="margin-top:28px">Gardel Batista · Diretor de Growth · MyDose · 13/11/2026</p>
 </div></section>
 
 <div class="nav">↑ ↓ para navegar</div>
